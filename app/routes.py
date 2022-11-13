@@ -10,5 +10,3 @@ from flask_login import current_user, login_user, logout_user, login_required
 @app.route("/")
 def index():
     return render_template("index.html", title="Trang chủ")
-
-

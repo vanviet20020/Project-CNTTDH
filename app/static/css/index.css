@@ -1,0 +1,14 @@
+.product{
+  text-align: center;
+}
+.product .container .row{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.product .container .col{
+  width: calc(100% / 4);
+}
+.product .col .item .info img{
+  width: 100%;
+}

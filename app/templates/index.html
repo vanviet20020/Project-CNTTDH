@@ -5,59 +5,347 @@
 </head>
 
 {% block body %}
+<style>
+  .product {
+    padding: 50px 0;
+  }
+  .product .container h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #fe7900;
+  }
+  .product .container .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .product .container .col {
+    width: calc(100% / 6);
+  }
+  .product .col .item .info img {
+    width: 100%;
+  }
+  .product .item .control h3 {
+    font-size: 16px;
+    color: #000;
+    padding-top: 10px;
+  }
+  .product .item .control h3 {
+    font-size: 13px;
+    color: #999;
+    margin-top: -5px;
+  }
+  .product .item .control a {
+    padding: 10px 42px;
+    background-color: #0c2235;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+  }
+  .product .item .control a i {
+    background: #fe7900;
+    border-radius: 50%;
+    font-size: 14px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+  }
+  .product .item .control a:hover {
+    text-decoration: underline;
+  }
+
+  .carousel {
+    padding: 50px 0;
+  }
+  .carousel .container h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #fe7900;
+  }
+  .carousel .container .testimonial-slider {
+    display: flex;
+    /* flex-wrap: wrap; */
+  }
+  .carousel .container .col {
+    width: calc(100% / 6);
+    padding-right: 20px;
+  }
+  .carousel .col .testimonial-comment .info img {
+    width: 100%;
+  }
+  .carousel .testimonial-comment .control h3 {
+    font-size: 16px;
+    color: #000;
+    padding-top: 10px;
+  }
+  .carousel .testimonial-slider .testimonial-comment .control h3 {
+    font-size: 13px;
+    color: #999;
+    margin-top: -5px;
+  }
+  .carousel .testimonial-comment .control a {
+    padding: 10px 12px;
+    /* background-color: #0c2235; */
+    font-size: 14px;
+    color: #000;
+    text-decoration: none;
+  }
+  .carousel .testimonial-comment .control a i {
+    background: #fe7900;
+    border-radius: 50%;
+    font-size: 14px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+  }
+  .carousel .testimonial-comment .control a:hover {
+    text-decoration: underline;
+  }
+
+  .future .container h1 {
+    font-size: 30px;
+  }
+  .future .container p {
+    font-size: 17px;
+  }
+</style>
 <section class="product">
-        <div class="container">
-            <h1>PHIM ĐANG CHIẾU</h1>
-            <div class="row">
-                <div class="col">
-                    <div class="item">
-                    <div class="info">
-                        <img src="../static/img/a2.jpg" alt="BLACK" />
-                    </div>
-                    <div class="control">
-                        <h3>BLACK PANTHER:WANKANDE FOEVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <button><i class="fa-solid fa-exclamation"></i> Xem chi tiết! <button>     
-                    </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="item">
-                    <div class="info">
-                        <img src="../static/img/a2.jpg" alt="BLACK" />
-                    </div>
-                    <div class="control">
-                        <h3>BLACK PANTHER:WANKANDE FOEVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <button><i class="fa-solid fa-exclamation"></i> Xem chi tiết! <button>     
-                    </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="item">
-                    <div class="info">
-                        <img src="../static/img/a2.jpg" alt="BLACK" />
-                    </div>
-                    <div class="control">
-                        <h3>BLACK PANTHER:WANKANDE FOEVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <button><i class="fa-solid fa-exclamation"></i> Xem chi tiết! <button>     
-                    </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="item">
-                    <div class="info">
-                        <img src="../static/img/a2.jpg" alt="BLACK" />
-                    </div>
-                    <div class="control">
-                        <h3>BLACK PANTHER:WANKANDE FOEVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <button><i class="fa-solid fa-exclamation"></i> Xem chi tiết! <button>     
-                    </div>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <h1>PHIM ĐANG CHIẾU</h1>
+    <div class="row">
+      <div class="col" style="padding-bottom: 15px">
+        <div class="item">
+          <div class="info">
+            <img src="../static/img/a2.jpg" alt="BLACK" />
+          </div>
+          <div class="control">
+            <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
+            <p>Khởi chiếu:10.11.2022</p>
+            <a href="#">
+              <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
+            </a>
+          </div>
         </div>
-    </section>
+      </div>
+      <div class="col" style="padding-bottom: 15px">
+        <div class="item">
+          <div class="info">
+            <img src="../static/img/a2.jpg" alt="BLACK" />
+          </div>
+          <div class="control">
+            <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
+            <p>Khởi chiếu:10.11.2022</p>
+            <a href="#">
+              <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="padding-bottom: 15px">
+        <div class="item">
+          <div class="info">
+            <img src="../static/img/a2.jpg" alt="BLACK" />
+          </div>
+          <div class="control">
+            <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
+            <p>Khởi chiếu:10.11.2022</p>
+            <a href="#">
+              <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="padding-bottom: 15px">
+        <div class="item">
+          <div class="info">
+            <img src="../static/img/a2.jpg" alt="BLACK" />
+          </div>
+          <div class="control">
+            <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
+            <p>Khởi chiếu:10.11.2022</p>
+            <a href="#">
+              <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="padding-bottom: 15px">
+        <div class="item">
+          <div class="info">
+            <img src="../static/img/a2.jpg" alt="BLACK" />
+          </div>
+          <div class="control">
+            <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
+            <p>Khởi chiếu:10.11.2022</p>
+            <a href="#">
+              <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col" style="padding-bottom: 15px">
+        <div class="item">
+          <div class="info">
+            <img src="../static/img/a2.jpg" alt="BLACK" />
+          </div>
+          <div class="control">
+            <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
+            <p>Khởi chiếu:10.11.2022</p>
+            <a href="#">
+              <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="carousel">
+  <div class="container">
+    <h1>PHIM SẮP CHIẾU</h1>
+    <div class="testimonial-slider">
+      <div class="col">
+        <div class="testimonial-comment">
+          <div class="info">
+            <img src="../static/img/a2.jpg" alt="BLACK" />
+          </div>
+          <div class="body">
+            <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
+            <p>Khởi chiếu:10.11.2022</p>
+            <div class="control">
+              <a href="#"> <i class="fa-solid fa-play"></i>Trailer </a>
+              <a href="#"> <i class="fa-solid fa-exclamation"></i>Chi tiết! </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="testimonial-comment">
+          <div class="info">
+            <img src="../static/img/a2.jpg" alt="BLACK" />
+          </div>
+          <div class="body">
+            <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
+            <p>Khởi chiếu:10.11.2022</p>
+            <div class="control">
+              <a href="#"> <i class="fa-solid fa-play"></i>Trailer </a>
+              <a href="#"> <i class="fa-solid fa-exclamation"></i>Chi tiết! </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="testimonial-comment">
+          <div class="info">
+            <img src="../static/img/a2.jpg" alt="BLACK" />
+          </div>
+          <div class="body">
+            <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
+            <p>Khởi chiếu:10.11.2022</p>
+            <div class="control">
+              <a href="#"> <i class="fa-solid fa-play"></i>Trailer </a>
+              <a href="#"> <i class="fa-solid fa-exclamation"></i>Chi tiết! </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="testimonial-comment">
+          <div class="info">
+            <img src="../static/img/a2.jpg" alt="BLACK" />
+          </div>
+          <div class="body">
+            <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
+            <p>Khởi chiếu:10.11.2022</p>
+            <div class="control">
+              <a href="#"> <i class="fa-solid fa-play"></i>Trailer </a>
+              <a href="#"> <i class="fa-solid fa-exclamation"></i>Chi tiết! </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="testimonial-comment">
+          <div class="info">
+            <img src="../static/img/a2.jpg" alt="BLACK" />
+          </div>
+          <div class="body">
+            <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
+            <p>Khởi chiếu:10.11.2022</p>
+            <div class="control">
+              <a href="#"> <i class="fa-solid fa-play"></i>Trailer </a>
+              <a href="#"> <i class="fa-solid fa-exclamation"></i>Chi tiết! </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="testimonial-comment">
+          <div class="info">
+            <img src="../static/img/a2.jpg" alt="BLACK" />
+          </div>
+          <div class="body">
+            <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
+            <p>Khởi chiếu:10.11.2022</p>
+            <div class="control">
+              <a href="#"> <i class="fa-solid fa-play"></i>Trailer </a>
+              <a href="#"> <i class="fa-solid fa-exclamation"></i>Chi tiết! </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="testimonial-comment">
+          <div class="info">
+            <img src="../static/img/a2.jpg" alt="BLACK" />
+          </div>
+          <div class="body">
+            <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
+            <p>Khởi chiếu:10.11.2022</p>
+            <div class="control">
+              <a href="#"> <i class="fa-solid fa-play"></i>Trailer </a>
+              <a href="#"> <i class="fa-solid fa-exclamation"></i>Chi tiết! </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="future">
+  <div class="container">
+    <h1>Rapchieuphim.com - Đồng hành cùng bạn trong những thước phim</h1>
+    <p>
+      Bạn muốn đến rạp chiếu phim giải trí, nhưng không có nhiều thời gian rảnh
+      mà rạp lại đang có quá nhiều bộ phim hấp dẫn được công chiếu. Vậy thì hãy
+      ghé <a href="#" style="text-decoration: none">rapchieuphim.com</a> trước
+      khi đến rạp, để tìm cho mình đáp án cho câu hỏi nên ra rạp xem phim gì.
+    </p>
+    <p>
+      Với đội ngũ có nhiều kinh nghiệm trong ngành làm phim, chúng tôi sẽ cập
+      nhật đều đặn mỗi ngày các bài viết liên quan đến các bom tấn điện ảnh hấp
+      dẫn đang có mặt tại rạp, thông tin về các rạp chiếu phim và những chương
+      trình ưu đãi tại các rạp cụ thể.
+    </p>
+    <p>
+      Tất cả mọi bài viết mang đến cho bạn, đều là những tâm huyết của chúng tôi
+      đối với từng tác phẩm điện ảnh, nhằm mang đến những tin tức nóng hổi xoay
+      quanh bộ phim, cùng với đánh giá phim khách quan, đa chiều và chính xác
+      nhất. Đặc biệt, mọi thông tin đều được cung cấp cho bạn hoàn toàn miễn
+      phí. Bạn có thể tham khảo và tự đưa ra quyết định nên xem bộ phim nào nhé.
+    </p>
+    <p>
+      Nếu bạn là một người yêu thích phim ảnh, thường xuyên ra rạp để xem phim
+      giải trí thì hãy nhớ ủng hộ chúng tôi bằng cách Like, Share các bài viết
+      trên website này. Một hành động nhỏ của bạn sẽ là nguồn động viên và khích
+      lệ vô cùng to lớn với đội ngũ của chúng tôi, giúp chúng tôi có thêm năng
+      lượng để mang đến cho bạn những thông tin hữu ích nhanh chóng hơn.
+    </p>
+    <p>
+      Mọi thông tin liên hệ, góp ý các bạn vui lòng liên hệ:
+      contact@rapchieuphim.com
+    </p>
+  </div>
+</section>
 {% endblock %}

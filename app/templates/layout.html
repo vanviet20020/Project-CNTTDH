@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/css/index.css" />
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,15 +23,27 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
+    <!-- <<! slick !>> -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/slick-1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/slick-1.8.1/slick/slick-theme.css"
+    />
     <!--css-->
-    <link href="../static/css/layout.css" rel="stylesheet" />
-    <!-- <link
+    <!-- <link href="/static/css/layout.css" rel="stylesheet" type="text/css" /> -->
+    <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/layout.css') }}"
-    /> -->
+    />
     <title>Document</title>
     <title>{% block title %}{% endblock %}</title>
     {% block cdn %}{% endblock %}
+    <style></style>
   </head>
 
   <body>
@@ -49,27 +60,27 @@
         </div>
         <nav class="navbar" style="margin-top: 15px">
           <a href="#">
-            <i class="fa-solid fa-house" style="color: #fff"></i>
+            <i class="fa-solid fa-house"></i>
             <p>Trang chủ</p>
           </a>
           <a href="#">
-            <i class="fa-regular fa-clock" style="color: #fff"></i>
+            <i class="fa-regular fa-clock"></i>
             <p>Lịch chiếu</p>
           </a>
           <a href="#">
-            <i class="fa-solid fa-video" style="color: #fff"></i>
+            <i class="fa-solid fa-video"></i>
             <p>Đang chiếu</p>
           </a>
           <a href="#">
-            <i class="fa-solid fa-film" style="color: #fff"></i>
+            <i class="fa-solid fa-film"></i>
             <p>Sắp chiếu</p>
           </a>
           <a href="#">
-            <i class="fa-solid fa-align-justify" style="color: #fff"></i>
+            <i class="fa-solid fa-align-justify"></i>
             <p>Rạp</p>
           </a>
           <a href="#">
-            <i class="fa-solid fa-radio" style="color: #fff"></i>
+            <i class="fa-solid fa-radio"></i>
             <p>Tin điện ảnh</p>
           </a>
         </nav>
@@ -83,11 +94,12 @@
     </header>
     {% block body %} {% endblock %}
     <footer class="footer">
+      <!-- style="background-image: url('../static/img/footer_bg.jpg'); color: #fff" -->
       <div class="container">
         <div class="row">
           <div class="col">
             <div class="item">
-              <h1 style="font-size: 30px">PHIM</h1>
+              <h1>PHIM</h1>
               <ul>
                 <li>Phim đang chiếu</li>
                 <li>Phim sắp chiếu</li>
@@ -132,6 +144,20 @@
         </div>
       </div>
     </footer>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p>© Copyright 2017 Rapchieuphim.com</p>
+          </div>
+          <div class="col col-right">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of us</a>
+            <a href="#">About Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -145,6 +171,29 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+    <!-- jquery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- slick -->
+    <script
+      type="text/javascript"
+      src="../static/slick-1.8.1/slick/slick.min.js"
+    ></script>
     <script src="../static/js/index.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".testimonial-slider").slick({
+          autoplay: true,
+          slidesToShow: 6,
+          slidesToScroll: 1,
+          arrows: false,
+          dots: true,
+        });
+      });
+    </script>
   </body>
 </html>

@@ -22,6 +22,16 @@ def movie():
     return render_template("movies.html", title="Movies")
 
 
+@app.route("/login")
+def Login():
+    return render_template("login.html", title="Movies")
+
+
+@app.route("/signUp")
+def signup():
+    return render_template("signUp.html", title="Sign up")
+
+
 @app.route("/admin/user/add")
 def addUser():
     return render_template("addUser.html", title="Add User")

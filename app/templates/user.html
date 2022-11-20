@@ -1,0 +1,43 @@
+{% extends "admin.html" %} {% block title %} {{ title }} {% endblock %} {% block
+body %}
+
+<div class="user">
+  <div class="container">
+    <button class="btn btn-warning text-white">Thêm Admin</button>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Tên</th>
+          <th>Email</th>
+          <th>Số điện thoại</th>
+          <th>Giới tính</th>
+          <th>Role</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Toan</td>
+          <td>Email.@humg</td>
+          <td>01234567</td>
+          <td>Name</td>
+          <td>Admin</td>
+          <td>
+            <a href="#">
+              <i
+                class="fa-solid fa-trash"
+                style="color: Red; padding-right: 5px"
+              ></i>
+            </a>
+            <a href="#">
+              <i class="fa-solid fa-pen-to-square" style="color: blue"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

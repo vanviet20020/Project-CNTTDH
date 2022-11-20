@@ -1,115 +1,5 @@
-{% extends "layout.html" %} {% block title %} {{ title }} {% endblock %}
-<head>
-  <!--css-->
-  <link href="../static/css/index.css" rel="stylesheet" />
-</head>
-
-{% block body %}
-<style>
-  .product {
-    padding: 50px 0;
-  }
-  .product .container h1 {
-    font-size: 30px;
-    font-weight: 700;
-    color: #fe7900;
-  }
-  .product .container .row {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .product .container .col {
-    width: calc(100% / 6);
-  }
-  .product .col .item .info img {
-    width: 100%;
-  }
-  .product .item .control h3 {
-    font-size: 16px;
-    color: #000;
-    padding-top: 10px;
-  }
-  .product .item .control h3 {
-    font-size: 13px;
-    color: #999;
-    margin-top: -5px;
-  }
-  .product .item .control a {
-    padding: 10px 42px;
-    background-color: #0c2235;
-    font-size: 14px;
-    color: #fff;
-    text-decoration: none;
-  }
-  .product .item .control a i {
-    background: #fe7900;
-    border-radius: 50%;
-    font-size: 14px;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    text-align: center;
-  }
-  .product .item .control a:hover {
-    text-decoration: underline;
-  }
-
-  .carousel {
-    padding: 50px 0;
-  }
-  .carousel .container h1 {
-    font-size: 30px;
-    font-weight: 700;
-    color: #fe7900;
-  }
-  .carousel .container .testimonial-slider {
-    display: flex;
-    /* flex-wrap: wrap; */
-  }
-  .carousel .container .col {
-    width: calc(100% / 6);
-    padding-right: 20px;
-  }
-  .carousel .col .testimonial-comment .info img {
-    width: 100%;
-  }
-  .carousel .testimonial-comment .control h3 {
-    font-size: 16px;
-    color: #000;
-    padding-top: 10px;
-  }
-  .carousel .testimonial-slider .testimonial-comment .control h3 {
-    font-size: 13px;
-    color: #999;
-    margin-top: -5px;
-  }
-  .carousel .testimonial-comment .control a {
-    padding: 10px 12px;
-    /* background-color: #0c2235; */
-    font-size: 14px;
-    color: #000;
-    text-decoration: none;
-  }
-  .carousel .testimonial-comment .control a i {
-    background: #fe7900;
-    border-radius: 50%;
-    font-size: 14px;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    text-align: center;
-  }
-  .carousel .testimonial-comment .control a:hover {
-    text-decoration: underline;
-  }
-
-  .future .container h1 {
-    font-size: 30px;
-  }
-  .future .container p {
-    font-size: 17px;
-  }
-</style>
+{% extends "layout.html" %} {% block title %} {{ title }} {% endblock %} {%
+block body %}
 <section class="product">
   <div class="container">
     <h1>PHIM ĐANG CHIẾU</h1>
@@ -313,6 +203,57 @@
     </div>
   </div>
 </section>
+<!-- <section class="plan">
+  <div class="container">
+    <h1>TIN ĐIỆN ẢNH</h1>
+    <div class="row">
+      <div class="col">
+        <div class="image">
+          <img src="../static/img/a4.jpg" alt />
+        </div>
+        <div class="body">
+          <h3>Eternals dự kiến phát hành trên Disney+ vào đầu năm 2022</h3>
+          <div class="item d-flex">
+            <div class="control d-flex">
+              <i class="fa-solid fa-play"></i>
+              <p>Bá Thiết</p>
+            </div>
+            <div class="contact d-flex">
+              <i class="fa-solid fa-play"></i>
+              <p>Noverber 29, 2021</p>
+            </div>
+          </div>
+          <span
+            >Bom tấn được mong chờ nhất cuối năm,cũng là bộ phin tiếp theo trong
+            phase 4 của vũ trụ MCU - Eternals dự kiến sẽ phát hành...</span
+          >
+        </div>
+      </div>
+      <div class="col">
+        <div class="image">
+          <img src="../static/img/a4.jpg" alt />
+        </div>
+        <div class="body">
+          <h3>Eternals dự kiến phát hành trên Disney+ vào đầu năm 2022</h3>
+          <div class="item">
+            <div class="control">
+              <i class="fa-solid fa-play"></i>
+              <p>Bá Thiết</p>
+            </div>
+            <div class="contact">
+              <i class="fa-solid fa-play"></i>
+              <p>Noverber 29, 2021</p>
+            </div>
+          </div>
+          <span
+            >Bom tấn được mong chờ nhất cuối năm,cũng là bộ phin tiếp theo trong
+            phase 4 của vũ trụ MCU - Eternals dự kiến sẽ phát hành...</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
 <section class="future">
   <div class="container">
     <h1>Rapchieuphim.com - Đồng hành cùng bạn trong những thước phim</h1>

@@ -15,3 +15,13 @@ def index():
 @app.route("/admin")
 def admin():
     return render_template("user.html", title="Admin")
+
+
+@app.route("/admin/movie")
+def movie():
+    return render_template("movies.html", title="Movies")
+
+
+@app.route("/admin/user/add")
+def addUser():
+    return render_template("addUser.html", title="Add User")

@@ -17,6 +17,11 @@ def admin():
     return render_template("user.html", title="Admin")
 
 
+@app.route("/detail")
+def detail():
+    return render_template("detail.html", title="detail")
+
+
 @app.route("/admin/movie")
 def movie():
     return render_template("movies.html", title="Movies")

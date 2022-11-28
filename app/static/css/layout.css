@@ -31,10 +31,10 @@
 }
 .header .container .logo button {
     font-weight: 400;
-    font-size: 20px;
+    font-size: 16px;
     color: #fff;
     background-color: #ed1364;
-    padding: 5px;
+    padding: 8px;
     border-radius: 0 0.5rem 0.5rem 0;
     border: none; }
 .header .container .navbar {

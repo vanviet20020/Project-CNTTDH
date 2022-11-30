@@ -1,0 +1,56 @@
+{% extends "admin.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block body %}
+<div class="container">
+    <form class="row g-3 mt-3" method="post" action="">
+        {{ form.csrf_token }}
+        <div class="col-10">
+            {{ form.id_user(value=user.id) }}
+            {% for error in form.id_user.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="col-10">
+            {{ form.fullname.label(class="form-label") }}
+            {{ form.fullname(class="form-control", placeholder="Tên người dùng cũ '" + user.fullname + "'") }}
+            {% for error in form.fullname.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="col-10">
+            {{ form.phone_number.label(class="form-label") }}
+            {{ form.phone_number(class="form-control", placeholder="Số điện thoại cũ " + user.phone_number) }}
+            {% for error in form.phone_number.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="col-12">
+            {{ form.gender.label(class="form-label") }}
+            {% for subfield in form.gender %}
+            <tr>
+                <td>{{ subfield }}</td>
+                <td>{{ subfield.label }}</td>
+            </tr>
+            {% endfor %} {% for error in form.gender.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+            <div class="col-12">
+                {{ form.is_admin.label(class="form-label") }}
+                {% for subfield in form.is_admin %}
+                <tr>
+                    <td>{{ subfield }}</td>
+                    <td>{{ subfield.label }}</td>
+                </tr>
+                {% endfor %} {% for error in form.is_admin.errors %}
+                <span style="color: red">{{ error }}</span>
+                {% endfor %}
+
+            </div>
+            <div class="col-12">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+    </form>
+</div>
+{% endblock %}

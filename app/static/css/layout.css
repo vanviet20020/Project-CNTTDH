@@ -11,7 +11,10 @@
   
 .header {
     /* position: fixed; */
+<<<<<<< HEAD
     /* z-index: -10; */
+=======
+>>>>>>> d52ac9a793abe70c2e0e0651027088775370f98e
     background-color: black; 
 }
 .header .container {
@@ -21,12 +24,20 @@
     align-items: center; 
 }
 .header .container .logo a img {
+<<<<<<< HEAD
     width: 80px; 
+=======
+    width: 100px; 
+>>>>>>> d52ac9a793abe70c2e0e0651027088775370f98e
 }
 .header .container .logo input {
     margin-right: -5px;
     padding: 8px 0;
+<<<<<<< HEAD
     border-radius: 0.5rem 0 0 0.5rem;
+=======
+    border-radius: 5px;
+>>>>>>> d52ac9a793abe70c2e0e0651027088775370f98e
     border: none; 
 }
 .header .container .logo button {
@@ -35,7 +46,11 @@
     color: #fff;
     background-color: #ed1364;
     padding: 5px;
+<<<<<<< HEAD
     border-radius: 0 0.5rem 0.5rem 0;
+=======
+    border-radius: 10px;
+>>>>>>> d52ac9a793abe70c2e0e0651027088775370f98e
     border: none; }
 .header .container .navbar {
     text-align: center; }
@@ -54,6 +69,7 @@
     font-size: 16px;
     color: #fff; 
 }
+<<<<<<< HEAD
 .header .container .navbar a:hover {
   color: #ed1364;
 }
@@ -65,11 +81,18 @@
 .footer .container .row {
     display: flex;
     justify-content: space-around;
+=======
+.footer .container .row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+>>>>>>> d52ac9a793abe70c2e0e0651027088775370f98e
 }
 .footer .container .row .col {
     width: 25%; 
 }
 .footer .container .row .col .item h1 {
+<<<<<<< HEAD
     color: #fe025c;
     font-size: 24px;
     font-weight: 700;
@@ -126,4 +149,7 @@
 }
 .footer-bottom .container .row a:hover{
   text-decoration: underline;
+=======
+    font-size: 15px; 
+>>>>>>> d52ac9a793abe70c2e0e0651027088775370f98e
 }

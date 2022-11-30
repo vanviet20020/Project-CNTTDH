@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .product {
     padding: 50px 0;
   }
@@ -102,3 +103,19 @@
   .future .container p {
     font-size: 17px;
   }
+=======
+.product{
+  text-align: center;
+}
+.product .container .row{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.product .container .col{
+  width: calc(100% / 4);
+}
+.product .col .item .info img{
+  width: 100%;
+}
+>>>>>>> d52ac9a793abe70c2e0e0651027088775370f98e

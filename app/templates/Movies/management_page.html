@@ -1,0 +1,50 @@
+{% extends "admin.html" %} {% block title %} {{ title }} {% endblock %} {% block
+body %}
+
+<div class="user">
+  <div class="container">
+    <a class="btn btn-warning text-white" href="{{ url_for('create_movie') }}">Thêm phim mới</a>
+    <form class="d-flex pt-3 pb-3">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <table class="table table-striped text-center">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Tên</th>
+          <th>Ảnh</th>
+          <th>Đạo diễn</th>
+          <th>Diễn viên</th>
+          <th>Thể loại</th>
+          <th>Ngôn ngữ</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for movie in movies %}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          <td>{{movie.name}}</td>
+          <td><a href="http://localhost:8080/static/img/Movie/{{movie.img}}">{{movie.img}}'</a></td>
+          <td>{{movie.director}}</td>
+          <td>{{movie.actor}}</td>
+          <td>{{movie.genre}}</td>
+          <td>{{movie.release_date }}</td>
+          <td>
+            <a href="{{url_for('update_movie', id_movie=movie.id)}}" class="btn btn-primary " role="button">
+              Cập nhật
+            </a>
+          </td>
+          <td>
+            <a href="{{url_for('delete_movie', id_movie=movie.id)}}" class="btn btn-danger">
+              Xóa
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

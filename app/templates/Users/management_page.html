@@ -1,0 +1,54 @@
+{% extends "admin.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block body %}
+<div class="container mt-3">
+    <button class="btn btn-warning text-white">Thêm Admin</button>
+    <form class="d-flex pt-3 pb-3" action="{{url_for('management_search_users')}}" class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="data_search" />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <table class="table table-striped text-center">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Giới tính</th>
+                <th>Role</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{user.fullname}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.phone_number}}</td>
+                <td>{{user.gender}}</td>
+                <td>
+                    {% if user.is_admin ==true %}
+                    Admin
+                    {% else %}
+                    Người dùng
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{url_for('update_user', id_user=user.id)}}" class="btn btn-primary " role="button">
+                        Cập nhật
+                    </a>
+                </td>
+                <td>
+                    <a href="{{url_for('delete_user', id_user=user.id)}}" class="btn btn-danger">
+                        Xóa
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

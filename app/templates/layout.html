@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../static/img/logo.png"
+      type="image/x-icon"
+    />
     <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,7 +46,6 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/layout.css') }}"
     />
-    <title>Document</title>
     <title>{% block title %}{% endblock %}</title>
     {% block cdn %}{% endblock %}
     <style></style>
@@ -60,7 +64,7 @@
           </div>
         </div>
         <nav class="navbar" style="margin-top: 15px">
-          <a href="#">
+          <a href="/app/templates/index.html">
             <i class="fa-solid fa-house"></i>
             <p>Trang chủ</p>
           </a>
@@ -86,10 +90,29 @@
           </a>
         </nav>
         <div class="login">
-          <a href="#" class="btn btn-outline-danger me-2" role="button"
-            >Đăng nhap</a
+          {% if current_user.is_authenticated %} Chào {{current_user.fullname}}
+          <a
+            href="{{url_for('logout')}}"
+            class="btn btn-outline-danger me-2"
+            role="button"
+            >Đăng xuất</a
           >
-          <a href="#" class="btn btn-danger btn" role="button">Đăng kí </a>
+
+          {% else %}
+          <a
+            href="{{ url_for('login') }}"
+            class="btn btn-outline-danger me-2"
+            role="button"
+            >Đăng nhập
+          </a>
+
+          <a
+            href="{{ url_for('sign_up') }}"
+            class="btn btn-danger btn"
+            role="button"
+            >Đăng kí
+          </a>
+          {% endif %}
         </div>
       </div>
     </header>

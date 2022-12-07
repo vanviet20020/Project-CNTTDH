@@ -1,0 +1,28 @@
+{% extends "admin.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block body %}
+<div class="container">
+    <form class="row g-3 mt-3" method="post" action="" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        <div class="col-5">
+            {{ form.name.label(class="form-label") }}
+            {{ form.name(class="form-control", placeholder="Nhập tên nhà cung cấp") }}
+            {% for error in form.name.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.photo.label(class="form-label") }}<br />
+            {{ form.photo(class="form-control") }}<br />
+            {% for error in form.photo.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="col-12">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

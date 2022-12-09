@@ -108,17 +108,13 @@ class SupplierForm(FlaskForm):
     ])
     submit = SubmitField('Xong')
 
-    def validate_name(self, name):
-        name = Supplier.query.filter_by(name=name.data).first()
-        if name is not None:
-            raise ValidationError('Tên nhà cung cấp đã tồn tại!')
-
 
 class CinemaForm(FlaskForm):
     id_supplier = HiddenField(validators=[DataRequired()])
     name = StringField('Tên rạp chiếu phim', validators=[DataRequired()])
     address = StringField('Địa chỉ', validators=[DataRequired()])
-    hotline = StringField('Hotline', validators=[DataRequired()])
+    district = StringField('Quận/Huyện', validators=[DataRequired()])
+    hotline = StringField('Hotline')
     lng = StringField('Kinh độ', validators=[DataRequired()])
     lat = StringField('Vĩ độ', validators=[DataRequired()])
     submit = SubmitField('Xong')
@@ -127,12 +123,12 @@ class CinemaForm(FlaskForm):
 class MovieForm(FlaskForm):
     name = StringField('Tên phim', validators=[DataRequired()])
     photo = FileField('Ảnh phim',validators=[FileRequired()])
-    describe = StringField('Mô tả', validators=[DataRequired()])
-    director = StringField('Đạo diễn', validators=[DataRequired()])
-    actor = StringField('Diễn viên', validators=[DataRequired()])
-    genre = StringField('Thể loại', validators=[DataRequired()])
+    describe = StringField('Mô tả')
+    director = StringField('Đạo diễn')
+    actor = StringField('Diễn viên')
+    genre = StringField('Thể loại')
     release_date = StringField('Ngày công chiếu', validators=[DataRequired()])
     running_time = StringField('Thời gian chiếu', validators=[DataRequired()])
-    language = StringField('Ngôn ngữ', validators=[DataRequired()])
-    rated = StringField('Khuyến cáo', validators=[DataRequired()])
+    language = StringField('Ngôn ngữ')
+    rated = StringField('Khuyến cáo')
     submit = SubmitField('Xong')

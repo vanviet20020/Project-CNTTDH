@@ -257,20 +257,18 @@ def create_cinema():
         suppliers = Supplier.query.all()
         form = CinemaForm()
         if form.validate_on_submit() and request.method == 'POST':
-            id_supplier = int(form.id_supplier.data)
-            name = form.name.data
-            address = form.address.data
-            hotline = form.hotline.data
+            id_supplier = int(request.form.get("id_supplier"))
+            print(id_supplier)
             # lấy giá trị lat long và gán vào biến geoCinema dưới dạng điểm
-            geomCinema = 'Point(' + form.lng.data + ' ' + form.lat.data + ')'
+            geomCinema = 'Point(" + form.lng.data + " " + form.lat.data + ")'
             new_cinema = Cinema(
                 id_supplier=id_supplier,
-                name=name,
-                address=address,
-                hotline=hotline,
-                geom=func.ST_GeomFromText(geomCinema, 4326),
+                name=form.name.data,
+                district=form.district.data,
+                address=form.address.data,
+                hotline=form.hotline.data,
+                geom=func.ST_GeomFromText(geomCinema, 4326)
             )
-
             db.session.add(new_cinema)
             db.session.commit()
             flash('Thêm rạp chiếu phim mới thành công!')
@@ -607,4 +605,4 @@ def admin():
         flash('Bạn không có quyền truy cập vào trang web này!')
         return redirect(url_for('index'))
     else:
-        return redirect( url_for('management_users') )
+        return redirect(url_for('management_users'))

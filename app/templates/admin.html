@@ -23,9 +23,12 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/layout.css') }}" -->
   <!-- /> -->
-  <title>Document</title>
-  <title>{% block title %}{% endblock %}</title>
-  {% block cdn %}{% endblock %}
+  {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Welcome to Website!</title>
+    {% endif %}
+    {% block cdn %}{% endblock %}
   <style>
     body {
       /* background-color: black; */

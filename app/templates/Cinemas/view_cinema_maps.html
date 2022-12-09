@@ -1,5 +1,5 @@
 <!-- prettier-ignore -->
-{% extends "layout.html" %}
+{% extends "admin.html" %}
 
 
 {% block title %}
@@ -8,24 +8,16 @@
 
 
 {% block cdn %}
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
   integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-  crossorigin=""
-/>
+  crossorigin="" />
 <!-- Make sure you put this AFTER Leaflet's CSS -->
-<script
-  src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
   integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-  crossorigin=""
-></script>
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  crossorigin=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
   integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-></script>
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- <link
   rel="stylesheet"
   href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css"
@@ -33,11 +25,7 @@
 {% endblock %} {% block body %}
 <h1>{{title}}</h1>
 <div>
-  <a
-    href="{{ url_for('create_cinema')}}"
-    class="btn btn-primary mb-3 max-width-content"
-    role="button"
-  >
+  <a href="{{ url_for('create_cinema')}}" class="btn btn-primary mb-3 max-width-content" role="button">
     Tạo rạp chiếu phim mới
   </a>
 </div>
@@ -59,22 +47,24 @@
     if (feature.properties) {
       layer.bindPopup(
         '<div><h5>' +
-          feature.properties.name +
-          '</h5><span>' +
-          feature.properties.address +
-          '</span></br><span>' +
-          feature.properties.hotline +
-          '</span><div class="d-flex justify-content-evenly"><a href="/manager/cinema/update/' +
-          feature.properties.id +
-          '" class="btn btn-primary btn-sm text-white">Cập nhật</a><a href="/manager/cinema/delete/' +
-          feature.properties.id +
-          '" class="btn btn-danger btn-sm text-white">Xóa</a></div></div>'
+        feature.properties.name +
+        '</h5><span>' +
+        feature.properties.district +
+        '</h5><span>' +
+        feature.properties.address +
+        '</span></br><span>' +
+        feature.properties.hotline +
+        '</span><div class="d-flex justify-content-evenly"><a href="/manager/cinema/update/' +
+        feature.properties.id +
+        '" class="btn btn-primary btn-sm text-white">Cập nhật</a><a href="/manager/cinema/delete/' +
+        feature.properties.id +
+        '" class="btn btn-danger btn-sm text-white">Xóa</a></div></div>'
       );
     }
   }
 
   // Sử dụng fetchAPI để load dữ liệu sau đó xử lý và thêm lên mymap
-  fetch('http://127.0.0.1:5000/api/cinema/all')
+  fetch('http://127.0.0.1:8080/api/cinemas')
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -100,13 +90,13 @@
       .openPopup();
   }
 </script>
-  <!-- prettier-ignore -->
-  {% with messages = get_flashed_messages() %}
-    {% if messages[0] %} 
-      <input type="hidden" id="hiddenElement" value="{{messages[0]}}"></input>
-      <script>
-          alert(document.getElementById('hiddenElement').value);
-      </script>
-    {% endif %}
-  {% endwith %}
+<!-- prettier-ignore -->
+{% with messages = get_flashed_messages() %}
+{% if messages[0] %}
+<input type="hidden" id="hiddenElement" value="{{messages[0]}}"></input>
+<script>
+  alert(document.getElementById('hiddenElement').value);
+</script>
+{% endif %}
+{% endwith %}
 {% endblock %}

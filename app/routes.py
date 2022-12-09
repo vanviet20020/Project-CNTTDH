@@ -260,7 +260,7 @@ def create_cinema():
             id_supplier = int(request.form.get("id_supplier"))
             print(id_supplier)
             # lấy giá trị lat long và gán vào biến geoCinema dưới dạng điểm
-            geomCinema = 'Point(" + form.lng.data + " " + form.lat.data + ")'
+            geomCinema = "Point(" + form.lng.data + " " + form.lat.data + ")"
             new_cinema = Cinema(
                 id_supplier=id_supplier,
                 name=form.name.data,
@@ -363,8 +363,8 @@ def management_cinemas_search():
 def api_get_all_cinemas():
     cinemas = db.session.query(
         Cinema.id,
-        Cinema.supplier.name,
         Cinema.name,
+        Cinema.district,
         Cinema.address,
         Cinema.hotline,
         func.ST_AsGeoJSON(Cinema.geom).label('geometry'),
@@ -374,6 +374,7 @@ def api_get_all_cinemas():
         properties_temp = {
             'id': cinema.id,
             'name': cinema.name,
+            'district': cinema.district,
             'address': cinema.address,
             'hotline': cinema.hotline,
         }
@@ -405,7 +406,7 @@ def update_cinema(id_cinema):
             cinema.name = form.name.data
             cinema.address = form.address.data
             cinema.hotline = form.hotline.data
-            geomCinema = 'Point(' + form.lng.data + ' ' + form.lat.data + ')'
+            geomCinema = "Point(" + form.lng.data + " " + form.lat.data + ")"
             new_geom = func.ST_GeomFromText(geomCinema, 4326)
             cinema.geom = new_geom
             db.session.commit()

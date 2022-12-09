@@ -66,6 +66,7 @@
     </div>
     <div>
       <select name="id_supplier" class="form-select">
+        <option disabled value="">Chọn nhà cung cấp</option>
         {% for supplier in suppliers %}
         <option value="{{ supplier.id }}">
           {{ supplier.name }}

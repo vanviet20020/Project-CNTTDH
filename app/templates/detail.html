@@ -1,1 +1,127 @@
-fdsafd
+{% extends "layout.html" %} {% block title %} {{ title }} {% endblock %} {%
+block body %}
+
+<section class="detail">
+  <header class="title">
+    <div class="container row">
+      <div class="col-3 image">
+        <img src="../static/img/{{movie.img}}" alt="..." />
+      </div>
+      <div class="col-9 control">
+        <h1>{{movie.name}}</h1>
+        <p>Đạo diễn: {{movie.director}}</p>
+        <p>Diễn viên: {{movie.actor}}</p>
+        <p>Thời lượng: {{movie.running_time}}</p>
+        <p>Thể loại: {{movie.genre}}</p>
+        <p>Khởi chiếu: {{movie.release_date}} tại Việt Nam</p>
+        <span>Đối tượng: phim cấm dưới khán giả 18 tuổi</span>
+        <p class="ptrailer">
+          <a href="#">Đặt vé</a>
+        </p>
+      </div>
+      <div class="resumen">
+        <h1>TÓM TẮT</h1>
+        <p>{{movie.describe}}</p>
+      </div>
+    </div>
+  </header>
+  <main class="main">
+    <div class="container row">
+      <div class="col-6">
+        <h1>LỊCH CHIẾU PHIM</h1>
+        <form class="form">
+          <label>Hệ thống rạp</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Tất cả</option>
+            <option>CGV</option>
+            <option>Lotter Cinema</option>
+            <option>Galaxy Cinema</option>
+            <option>Startlight</option>
+            <option>BHD start</option>
+            <option>Mega GS</option>
+          </select>
+          <button>Tìm lịch chiếu</button>
+        </form>
+        <div class="movie-showtime">
+          <ul>
+            <li>
+              <a href="#">28/11</a>
+            </li>
+            <li>
+              <a href="#">29/11</a>
+            </li>
+            <li>
+              <a href="#">30/11</a>
+            </li>
+            <li>
+              <a href="#">01/12</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="movie">
+              <div
+                class="item d-flex justify-content-between align-items:center"
+              >
+                <h3>Lotte Nam Sài Gòn</h3>
+                <div class="pull-left">
+                  <a href="#">Lịch chiếu</a>
+                  <a href="#">Giá vé</a>
+                </div>
+              </div>
+              <p>
+                Tầng 3, TTTM Lotter, số 469 đường Nguyễn Hữu Thọ, P.Tân Hưng,
+                Q.7, TP.HCM, Việt Nam
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <h1>HỎI ĐÁP PHIM</h1>
+        <form style="text-align: end">
+          <textarea
+            placeholder="Nhập nội dung câu hỏi tại đây"
+            style="width: 100%; height: 150px"
+          ></textarea>
+          <div class="form-group mb-3 style:text-align:left">
+            <input
+              type="text"
+              placeholder="tên của bạn"
+              style="
+                width: 49%;
+                padding: 5px;
+                border-radius: 5px;
+                border: none;
+                color: #666;
+              "
+            />
+            <input
+              type="number"
+              placeholder="số điện thoai"
+              style="
+                width: 50%;
+                padding: 5px;
+                border-radius: 5px;
+                border: none;
+                color: #666;
+              "
+            />
+          </div>
+          <button
+            style="
+              font-size: 14px;
+              background-color: #2ab27b;
+              border: none;
+              color: #fff;
+              padding: 5px 30px;
+              margin-top: 10px;
+            "
+          >
+            <i class="fa fa-share"></i>Gửi
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+</section>
+{% endblock %}

@@ -1,295 +1,86 @@
-{% extends "layout.html" %}
-
-{% block title %} {{ title }} {% endblock %}
-
-{% block body %}
+{% extends "layout.html" %} {% block title %} {{ title }} {% endblock %} {%
+block body %}
+<style></style>
 <section class="product">
-    <div class="container">
-        <h1>PHIM ĐANG CHIẾU</h1>
-        <div class="row">
-            <div class="col">
-                <div class="item">
-                    <div class="info">
-                        <img src="../static/img/a2.jpg" alt="BLACK" />
-                    </div>
-                    <div class="control">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <a href="#">
-                            <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="item">
-                    <div class="info">
-                        <img src="../static/img/a6.jpg" alt="BLACK" />
-                    </div>
-                    <div class="control">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <a href="#">
-                            <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="item">
-                    <div class="info">
-                        <img src="../static/img/a8.jpg" alt="BLACK" />
-                    </div>
-                    <div class="control">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <a href="#">
-                            <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="item">
-                    <div class="info">
-                        <img src="../static/img/a9.jpeg" alt="BLACK" />
-                    </div>
-                    <div class="control">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <a href="#">
-                            <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="item">
-                    <div class="info">
-                        <img src="../static/img/b2.jpg" alt="BLACK" />
-                    </div>
-                    <div class="control">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <a href="#">
-                            <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="item">
-                    <div class="info">
-                        <img src="../static/img/a5.jpg" alt="BLACK" />
-                    </div>
-                    <div class="control">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <a href="#">
-                            <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
-                        </a>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <h1>PHIM ĐANG CHIẾU</h1>
+    <div class="row">
+      {% for movie in movies %}
+      <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+        <div class="item">
+          <a href="{{ url_for('detail',movie_id=movie.id)}}" class="info">
+            <img src="../static/img/{{movie.img}}" alt="BLACK" />
+          </a>
+          <div class="control">
+            <h3>{{movie.name}}</h3>
+            <p>{{movie.release_date}}</p>
+            <a href="{{ url_for('detail',movie_id=movie.id)}}">
+              <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
+            </a>
+          </div>
         </div>
+      </div>
+      {% endfor %}
     </div>
+  </div>
 </section>
 <section class="carousel">
-    <div class="container">
-        <h1>PHIM SẮP CHIẾU</h1>
-        <div class="testimonial-slider">
-            <div class="col">
-                <div class="testimonial-comment">
-                    <div class="info">
-                        <img src="../static/img/a2.jpg" alt="BLACK" />
-                    </div>
-                    <div class="body">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <div class="control">
-                            <a href="#"> <i class="fa-solid fa-play"></i>Trailer </a>
-                            <a href="#"> <i class="fa-solid fa-exclamation"></i>Chi tiết! </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="testimonial-comment">
-                    <div class="info">
-                        <img src="../static/img/a2.jpg" alt="BLACK" />
-                    </div>
-                    <div class="body">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <div class="control">
-                            <a href="#"> <i class="fa-solid fa-play"></i>Trailer </a>
-                            <a href="#"> <i class="fa-solid fa-exclamation"></i>Chi tiết! </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="testimonial-comment">
-                    <div class="info">
-                        <img src="../static/img/a2.jpg" alt="BLACK" />
-                    </div>
-                    <div class="body">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <div class="control">
-                            <a href="#"> <i class="fa-solid fa-play"></i>Trailer </a>
-                            <a href="#"> <i class="fa-solid fa-exclamation"></i>Chi tiết! </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="testimonial-comment">
-                    <div class="info">
-                        <img src="../static/img/a2.jpg" alt="BLACK" />
-                    </div>
-                    <div class="body">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <div class="control">
-                            <a href="#"> <i class="fa-solid fa-play"></i>Trailer </a>
-                            <a href="#"> <i class="fa-solid fa-exclamation"></i>Chi tiết! </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="testimonial-comment">
-                    <div class="info">
-                        <img src="../static/img/a2.jpg" alt="BLACK" />
-                    </div>
-                    <div class="body">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <div class="control">
-                            <a href="#"> <i class="fa-solid fa-play"></i>Trailer </a>
-                            <a href="#"> <i class="fa-solid fa-exclamation"></i>Chi tiết! </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="testimonial-comment">
-                    <div class="info">
-                        <img src="../static/img/a2.jpg" alt="BLACK" />
-                    </div>
-                    <div class="body">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <div class="control">
-                            <a href="#"> <i class="fa-solid fa-play"></i>Trailer </a>
-                            <a href="#"> <i class="fa-solid fa-exclamation"></i>Chi tiết! </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="testimonial-comment">
-                    <div class="info">
-                        <img src="../static/img/a2.jpg" alt="BLACK" />
-                    </div>
-                    <div class="body">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <div class="control">
-                            <a href="#"> <i class="fa-solid fa-play"></i>Trailer </a>
-                            <a href="#"> <i class="fa-solid fa-exclamation"></i>Chi tiết! </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- <section class="plan">
-      <div class="container">
-        <h1>TIN ĐIỆN ẢNH</h1>
-        <div class="row">
-          <div class="col">
-            <div class="image">
-              <img src="../static/img/a4.jpg" alt />
-            </div>
-            <div class="body">
-              <h3>Eternals dự kiến phát hành trên Disney+ vào đầu năm 2022</h3>
-              <div class="item d-flex">
-                <div class="control d-flex">
-                  <i class="fa-solid fa-play"></i>
-                  <p>Bá Thiết</p>
-                </div>
-                <div class="contact d-flex">
-                  <i class="fa-solid fa-play"></i>
-                  <p>Noverber 29, 2021</p>
-                </div>
-              </div>
-              <span
-                >Bom tấn được mong chờ nhất cuối năm,cũng là bộ phin tiếp theo trong
-                phase 4 của vũ trụ MCU - Eternals dự kiến sẽ phát hành...</span
-              >
-            </div>
+  <div class="container">
+    <h1>PHIM SẮP CHIẾU</h1>
+    <div class="testimonial-slider">
+      {% for movie in movies %}
+      <div class="col">
+        <div class="testimonial-comment">
+          <div class="info">
+            <img src="../static/img/{{movie.img}}" alt="BLACK" />
           </div>
-          <div class="col">
-            <div class="image">
-              <img src="../static/img/a4.jpg" alt />
-            </div>
-            <div class="body">
-              <h3>Eternals dự kiến phát hành trên Disney+ vào đầu năm 2022</h3>
-              <div class="item">
-                <div class="control">
-                  <i class="fa-solid fa-play"></i>
-                  <p>Bá Thiết</p>
-                </div>
-                <div class="contact">
-                  <i class="fa-solid fa-play"></i>
-                  <p>Noverber 29, 2021</p>
-                </div>
-              </div>
-              <span
-                >Bom tấn được mong chờ nhất cuối năm,cũng là bộ phin tiếp theo trong
-                phase 4 của vũ trụ MCU - Eternals dự kiến sẽ phát hành...</span
-              >
+          <div class="body">
+            <h3>{{movie.name}}</h3>
+            <p>{{movie.release_date}}</p>
+            <div class="control">
+              <a href="#"> <i class="fa-solid fa-play"></i>Trailer </a>
+              <a href="#"> <i class="fa-solid fa-exclamation"></i>Chi tiết! </a>
             </div>
           </div>
         </div>
       </div>
-    </section> -->
-<section class="future">
-    <div class="container">
-        <h1>Rapchieuphim.com - Đồng hành cùng bạn trong những thước phim</h1>
-        <p>
-            Bạn muốn đến rạp chiếu phim giải trí, nhưng không có nhiều thời gian rảnh
-            mà rạp lại đang có quá nhiều bộ phim hấp dẫn được công chiếu. Vậy thì hãy
-            ghé <a href="#" style="text-decoration: none">rapchieuphim.com</a> trước
-            khi đến rạp, để tìm cho mình đáp án cho câu hỏi nên ra rạp xem phim gì.
-        </p>
-        <p>
-            Với đội ngũ có nhiều kinh nghiệm trong ngành làm phim, chúng tôi sẽ cập
-            nhật đều đặn mỗi ngày các bài viết liên quan đến các bom tấn điện ảnh hấp
-            dẫn đang có mặt tại rạp, thông tin về các rạp chiếu phim và những chương
-            trình ưu đãi tại các rạp cụ thể.
-        </p>
-        <p>
-            Tất cả mọi bài viết mang đến cho bạn, đều là những tâm huyết của chúng tôi
-            đối với từng tác phẩm điện ảnh, nhằm mang đến những tin tức nóng hổi xoay
-            quanh bộ phim, cùng với đánh giá phim khách quan, đa chiều và chính xác
-            nhất. Đặc biệt, mọi thông tin đều được cung cấp cho bạn hoàn toàn miễn
-            phí. Bạn có thể tham khảo và tự đưa ra quyết định nên xem bộ phim nào nhé.
-        </p>
-        <p>
-            Nếu bạn là một người yêu thích phim ảnh, thường xuyên ra rạp để xem phim
-            giải trí thì hãy nhớ ủng hộ chúng tôi bằng cách Like, Share các bài viết
-            trên website này. Một hành động nhỏ của bạn sẽ là nguồn động viên và khích
-            lệ vô cùng to lớn với đội ngũ của chúng tôi, giúp chúng tôi có thêm năng
-            lượng để mang đến cho bạn những thông tin hữu ích nhanh chóng hơn.
-        </p>
-        <p>
-            Mọi thông tin liên hệ, góp ý các bạn vui lòng liên hệ:
-            contact@rapchieuphim.com
-        </p>
+      {% endfor %}
     </div>
+  </div>
+</section>
+<section class="future">
+  <div class="container">
+    <h1>Rapchieuphim.com - Đồng hành cùng bạn trong những thước phim</h1>
+    <p>
+      Bạn muốn đến rạp chiếu phim giải trí, nhưng không có nhiều thời gian rảnh
+      mà rạp lại đang có quá nhiều bộ phim hấp dẫn được công chiếu. Vậy thì hãy
+      ghé <a href="#" style="text-decoration: none">rapchieuphim.com</a> trước
+      khi đến rạp, để tìm cho mình đáp án cho câu hỏi nên ra rạp xem phim gì.
+    </p>
+    <p>
+      Với đội ngũ có nhiều kinh nghiệm trong ngành làm phim, chúng tôi sẽ cập
+      nhật đều đặn mỗi ngày các bài viết liên quan đến các bom tấn điện ảnh hấp
+      dẫn đang có mặt tại rạp, thông tin về các rạp chiếu phim và những chương
+      trình ưu đãi tại các rạp cụ thể.
+    </p>
+    <p>
+      Tất cả mọi bài viết mang đến cho bạn, đều là những tâm huyết của chúng tôi
+      đối với từng tác phẩm điện ảnh, nhằm mang đến những tin tức nóng hổi xoay
+      quanh bộ phim, cùng với đánh giá phim khách quan, đa chiều và chính xác
+      nhất. Đặc biệt, mọi thông tin đều được cung cấp cho bạn hoàn toàn miễn
+      phí. Bạn có thể tham khảo và tự đưa ra quyết định nên xem bộ phim nào nhé.
+    </p>
+    <p>
+      Nếu bạn là một người yêu thích phim ảnh, thường xuyên ra rạp để xem phim
+      giải trí thì hãy nhớ ủng hộ chúng tôi bằng cách Like, Share các bài viết
+      trên website này. Một hành động nhỏ của bạn sẽ là nguồn động viên và khích
+      lệ vô cùng to lớn với đội ngũ của chúng tôi, giúp chúng tôi có thêm năng
+      lượng để mang đến cho bạn những thông tin hữu ích nhanh chóng hơn.
+    </p>
+    <p>
+      Mọi thông tin liên hệ, góp ý các bạn vui lòng liên hệ:
+      contact@rapchieuphim.com
+    </p>
+  </div>
 </section>
 {% endblock %}

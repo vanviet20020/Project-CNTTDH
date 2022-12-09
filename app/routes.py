@@ -16,6 +16,12 @@ def index():
     return render_template('index.html', title='Rạp chiếu phim')
 
 
+@app.route("/detail/<int:movie_id>")
+def detail(movie_id):
+    movie = Movie.query.get(movie_id)
+    return render_template("detail.html", movie=movie, title="detail")
+
+
 @app.route('/sign_up', methods=['GET', 'POST'])
 def sign_up():
     # tạo biến form từ class SignUpForm bên form.py
@@ -607,4 +613,36 @@ def admin():
         flash('Bạn không có quyền truy cập vào trang web này!')
         return redirect(url_for('index'))
     else:
-        return redirect( url_for('management_users') )
+        return redirect(url_for('management_users'))
+
+
+@app.route("/api/cinema/list")
+def read_cinema_list():
+    cinemas = db.session.query(
+        Cinema.id,
+        Cinema.name,
+        Cinema.address,
+        Cinema.hotline,
+        Cinema.district,
+        func.ST_AsGeoJSON(Cinema.geom).label("geometry"),).all()
+    cinemasFeatures = []
+    for cinema in cinemas:
+        properties_temp = {
+            "id": cinema.id,
+            "Tên": cinema.name,
+            "Địa chỉ": cinema.address,
+            "Số Điện thoại": cinema.hotline,
+            "Quận": cinema.district}
+        geometry_temp = json.loads(cinema.geometry)
+        cinema_temp = {
+            "type": "Feature",
+            "properties": properties_temp,
+            "geometry": geometry_temp,
+        }
+        cinemasFeatures.append(cinema_temp)
+    return jsonify({"features": cinemasFeatures})
+
+
+@app.route("/api/ciema/view")
+def api_ciema_view():
+    return render_template("cinema.html")

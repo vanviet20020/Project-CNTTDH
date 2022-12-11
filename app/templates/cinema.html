@@ -32,6 +32,13 @@
       crossorigin=""
     ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- geocontrol -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.79.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+    <!-- geocoding -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
     <style>
     </style>
   </head>
@@ -59,7 +66,6 @@
           maxZoom: 20,
           subdomains:['mt0','mt1','mt2','mt3']
       });
-    
       var myStyle1 = L.icon({
         iconUrl: "/static/img/1.png",
         iconSize: [28, 40],
@@ -120,14 +126,6 @@
               "<b><br></b>Rạp:" +
               feature.properties.name
           );
-          // layer.on("click", function (e) {
-          //   document.querySelector("#id").value = feature.properties.id;
-          //   document.querySelector("#name").value = feature.properties.name;
-          //   document.querySelector("#diachi").value =
-          //     feature.properties.address;
-          //   document.querySelector("#hotline").value =
-          //     feature.properties.hotline;
-          // });
         }
       }
       // khai bao bien ledend
@@ -157,24 +155,10 @@
         Lotte: lotte,
       };
       L.control.layers(baseLayers, overlayMaps).addTo(map);
-
-      function getLocation() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-        }
-      }
-      function showPosition(position) {
-        L.marker([position.coords.latitude, position.coords.longitude])
-          .addTo(map)
-          .bindPopup("<b>Vị trí của bạn</b>")
-          .openPopup();
-        // L.circle([position.coords.latitude, position.coords.longitude],{radius:position.coords.accuracy}).addTo(map)
-      }
+      //dinh vi
+      L.control.locate().addTo(map);
+      //tim kiem
+      L.Control.geocoder().addTo(map);
     </script>
-    <div class="container" style="margin-right: -5px;">
-        <button onclick="getLocation()">
-            where i am
-          </button>
-    </div>
   </body>
 {% endblock %}

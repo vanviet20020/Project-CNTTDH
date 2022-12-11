@@ -3,82 +3,80 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block body %}
-<div class="container">
-    <form class="row g-3 mt-3" method="post" action="" enctype="multipart/form-data">
-        {{ form.csrf_token }}
-        <div class="col-5">
-            {{ form.name.label(class="form-label") }}
-            {{ form.name(class="form-control", placeholder="Nhập tên phim") }}
-            {% for error in form.name.errors %}
-            <span style="color: red">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="col-5">
-            {{ form.photo.label(class="form-label") }}<br />
-            {{ form.photo(class="form-control") }}<br />
-            {% for error in form.photo.errors %}
-            <span style="color: red">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="col-5">
-            {{ form.describe.label(class="form-label") }}
-            {{ form.describe(class="form-control", placeholder="Nhập mô tả") }}
-            {% for error in form.describe.errors %}
-            <span style="color: red">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="col-5">
-            {{ form.director.label(class="form-label") }}
-            {{ form.director(class="form-control", placeholder="Nhập tên đạo diễn") }}
-            {% for error in form.director.errors %}
-            <span style="color: red">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="col-5">
-            {{ form.actor.label(class="form-label") }}
-            {{ form.actor(class="form-control", placeholder="Nhập tên các diễn viên") }}
-            {% for error in form.actor.errors %}
-            <span style="color: red">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="col-5">
-            {{ form.genre.label(class="form-label") }}
-            {{ form.genre(class="form-control", placeholder="Nhập thể loại phim") }}
-            {% for error in form.genre.errors %}
-            <span style="color: red">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="col-5">
-            {{ form.release_date.label(class="form-label") }}
-            {{ form.release_date(class="form-control", placeholder="Nhập ngày công chiếu") }}
-            {% for error in form.release_date.errors %}
-            <span style="color: red">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="col-5">
-            {{ form.running_time.label(class="form-label") }}
-            {{ form.running_time(class="form-control", placeholder="Nhập thời gian chiếu") }}
-            {% for error in form.running_time.errors %}
-            <span style="color: red">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="col-5">
-            {{ form.language.label(class="form-label") }}
-            {{ form.language(class="form-control", placeholder="Nhập ngôn ngữ") }}
-            {% for error in form.language.errors %}
-            <span style="color: red">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="col-5">
-            {{ form.rated.label(class="form-label") }}
-            {{ form.rated(class="form-control", placeholder="Nhập khuyến cáo") }}
-            {% for error in form.rated.errors %}
-            <span style="color: red">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="col-12">
-            {{ form.submit(class="btn btn-primary") }}
-        </div>
-    </form>
-</div>
+<form class="row g-3 mt-3" method="post" action="" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    <div class="col-5">
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control", placeholder="Nhập tên phim") }}
+        {% for error in form.name.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-5">
+        {{ form.photo.label(class="form-label") }}<br />
+        {{ form.photo(class="form-control") }}<br />
+        {% for error in form.photo.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-5">
+        {{ form.describe.label(class="form-label") }}
+        {{ form.describe(class="form-control", placeholder="Nhập mô tả") }}
+        {% for error in form.describe.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-5">
+        {{ form.director.label(class="form-label") }}
+        {{ form.director(class="form-control", placeholder="Nhập tên đạo diễn") }}
+        {% for error in form.director.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-5">
+        {{ form.actor.label(class="form-label") }}
+        {{ form.actor(class="form-control", placeholder="Nhập tên các diễn viên") }}
+        {% for error in form.actor.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-5">
+        {{ form.genre.label(class="form-label") }}
+        {{ form.genre(class="form-control", placeholder="Nhập thể loại phim") }}
+        {% for error in form.genre.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-5">
+        {{ form.release_date.label(class="form-label") }}
+        {{ form.release_date(class="form-control", placeholder="Nhập ngày công chiếu") }}
+        {% for error in form.release_date.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-5">
+        {{ form.running_time.label(class="form-label") }}
+        {{ form.running_time(class="form-control", placeholder="Nhập thời gian chiếu") }}
+        {% for error in form.running_time.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-5">
+        {{ form.language.label(class="form-label") }}
+        {{ form.language(class="form-control", placeholder="Nhập ngôn ngữ") }}
+        {% for error in form.language.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-5">
+        {{ form.rated.label(class="form-label") }}
+        {{ form.rated(class="form-control", placeholder="Nhập khuyến cáo") }}
+        {% for error in form.rated.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-12">
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+</form>
 {% endblock %}

@@ -10,53 +10,53 @@
 {% block body %}
 <h1>{{title}}</h1>
 <div>
-  <form action="{{url_for('search_cinemas')}}" class="d-flex" role="search">
-    <input type="search" name="search_data" class="form-control me-2"
-      placeholder="Nhập tên hoặc vị trí rạp chiếu phim" />
+    <form action="{{url_for('search_cinemas')}}" class="d-flex" role="search">
+        <input type="search" name="search_data" class="form-control me-2"
+            placeholder="Nhập tên hoặc vị trí rạp chiếu phim" />
 
-    <button type="submit" class="btn btn-outline-success">
-      <i class="fas fa-search"></i>
-    </button>
-  </form>
-  <a href="{{ url_for('create_cinema')}}" class="btn btn-primary mt-3 max-width-content" role="button">
-    Tạo rạp chiếu phim mới
-  </a>
-  <a href="{{ url_for('view_cinema_maps')}}" class="btn btn-primary mt-3 max-width-content" role="button">
-    Xem dưới dạng bản đồ
-  </a>
+        <button type="submit" class="btn btn-outline-success">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+    <a href="{{ url_for('create_cinema')}}" class="btn btn-primary mt-3 max-width-content" role="button">
+        Tạo rạp chiếu phim mới
+    </a>
+    <a href="{{ url_for('view_cinema_maps')}}" class="btn btn-primary mt-3 max-width-content" role="button">
+        Xem dưới dạng bản đồ
+    </a>
 </div>
 
 <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Tên</th>
-      <th scope="col">Địa chỉ</th>
-      <th scope="col">Hotline</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for cinema in cinemas %}
-    <tr>
-      <th scope="row">{{loop.index}}</th>
-      <td>{{cinema.name}}</td>
-      <td>{{cinema.address}}</td>
-      <td>{{cinema.hotline}}</td>
-      <td>
-        <a href="{{url_for('update_cinema', id_cinema=cinema.id)}}" class="btn btn-primary max-width-content"
-          role="button">
-          Cập nhật
-        </a>
-      </td>
-      <td>
-        <a href="{{url_for('delete_cinema', id_cinema=cinema.id)}}" class="btn btn-danger max-width-content"
-          role="button">
-          Xóa
-        </a>
-      </td>
-    </tr>
-    {% endfor %}
-  </tbody>
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Tên</th>
+            <th scope="col">Địa chỉ</th>
+            <th scope="col">Hotline</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cinema in cinemas %}
+        <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{cinema.name}}</td>
+            <td>{{cinema.address}}</td>
+            <td>{{cinema.hotline}}</td>
+            <td>
+                <a href="{{url_for('update_cinema', id_cinema=cinema.id)}}" class="btn btn-primary max-width-content"
+                    role="button">
+                    Cập nhật
+                </a>
+            </td>
+            <td>
+                <a href="{{url_for('delete_cinema', id_cinema=cinema.id)}}" class="btn btn-danger max-width-content"
+                    role="button">
+                    Xóa
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>
 
 <!-- prettier-ignore -->
@@ -64,7 +64,7 @@
 {% if messages[0] %}
 <input type="hidden" id="hiddenElement" value="{{messages[0]}}"></input>
 <script>
-  alert(document.getElementById('hiddenElement').value);
+    alert(document.getElementById('hiddenElement').value);
 </script>
 {% endif %}
 {% endwith %}

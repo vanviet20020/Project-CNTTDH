@@ -314,6 +314,7 @@ def search_cinemas():
 
 
 @app.route('/management/cinemas')
+@login_required
 def management_cinemas():
     if current_user.is_admin == False:
         flash('Bạn không có quyền truy cập vào trang web này!')

@@ -7,12 +7,12 @@
 {% endblock %}
 {% block cdn %}
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-  integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-  crossorigin="" />
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin="" />
 <!-- Make sure you put this AFTER Leaflet's CSS -->
 <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-  integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-  crossorigin=""></script>
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
 <!-- <script
   src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
   integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
@@ -54,82 +54,82 @@
 {% endblock %} {% block body %}
 <h1>{{title}}</h1>
 <div class="d-flex align-items-center">
-  <div id="mapid" style="width: 800px; height: 500px"></div>
-  <form action="" method="post" class="mx-4">
-    {{ form.csrf_token }}
-    <div class="input-group flex-nowrap">
-      {{ form.name.label(class="input-group-text") }}
-      {{form.name(class="form-control", placeholder="Rạp chiếu phim quốc gia") }}
-      {%for error in form.name.errors %}
-      <span style="color: red">{{ error }}</span>
-      {% endfor %}
-    </div>
-    <div>
-      <select name="id_supplier" class="form-select">
-        <option disabled value="">Chọn nhà cung cấp</option>
-        {% for supplier in suppliers %}
-        <option value="{{ supplier.id }}">
-          {{ supplier.name }}
-        </option>
-        {% endfor %}
-      </select>
-    </div>
-    <div class="input-group flex-nowrap">
-      {{ form.district.label(class="input-group-text") }}
-      {{form.district(class="form-control", placeholder="Ba Đình") }}
-      {%for error in form.district.errors %}
-      <span style="color: red">{{ error }}</span>
-      {% endfor %}
-    </div>
-    <div class="input-group flex-nowrap">
-      {{ form.address.label(class="input-group-text") }}
-      {{form.address(class="form-control", placeholder="87 Láng Hạ") }}
-      {%for error in form.address.errors %}
-      <span style="color: red">{{ error }}</span>
-      {% endfor %}
-    </div>
-    <div class="input-group flex-nowrap">
-      {{ form.hotline.label(class="input-group-text") }}
-      {{form.hotline(class="form-control", placeholder="02435141791") }}
-      {%for error in form.hotline.errors %}
-      <span style="color: red">{{ error }}</span>
-      {% endfor %}
-    </div>
-    <div class="input-group flex-nowrap">
-      {{ form.lng.label(class="input-group-text") }}
-      {{form.lng(class="form-control", placeholder="105.81580853458946") }}
-      {%for error in form.lng.errors %}
-      <span style="color: red">{{ error }}</span>
-      {% endfor %}
-    </div>
-    <div class="input-group flex-nowrap">
-      {{ form.lat.label(class="input-group-text") }}
-      {{form.lat(class="form-control", placeholder="21.016867452369038") }}
-      {%for error in form.lat.errors %}
-      <span style="color: red">{{ error }}</span>
-      {% endfor %}
-    </div>
-    <div class="col-12">
-      {{ form.submit(class="btn btn-primary") }}
-    </div>
-  </form>
+    <div id="mapid" style="width: 800px; height: 500px"></div>
+    <form action="" method="post" class="mx-4">
+        {{ form.csrf_token }}
+        <div class="input-group flex-nowrap">
+            {{ form.name.label(class="input-group-text") }}
+            {{form.name(class="form-control", placeholder="Rạp chiếu phim quốc gia") }}
+            {%for error in form.name.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            <select name="id_supplier" class="form-select">
+                <option disabled value="">Chọn nhà cung cấp</option>
+                {% for supplier in suppliers %}
+                <option value="{{ supplier.id }}">
+                    {{ supplier.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="input-group flex-nowrap">
+            {{ form.district.label(class="input-group-text") }}
+            {{form.district(class="form-control", placeholder="Ba Đình") }}
+            {%for error in form.district.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="input-group flex-nowrap">
+            {{ form.address.label(class="input-group-text") }}
+            {{form.address(class="form-control", placeholder="87 Láng Hạ") }}
+            {%for error in form.address.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="input-group flex-nowrap">
+            {{ form.hotline.label(class="input-group-text") }}
+            {{form.hotline(class="form-control", placeholder="02435141791") }}
+            {%for error in form.hotline.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="input-group flex-nowrap">
+            {{ form.lng.label(class="input-group-text") }}
+            {{form.lng(class="form-control", placeholder="105.81580853458946") }}
+            {%for error in form.lng.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="input-group flex-nowrap">
+            {{ form.lat.label(class="input-group-text") }}
+            {{form.lat(class="form-control", placeholder="21.016867452369038") }}
+            {%for error in form.lat.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="col-12">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
 </div>
 <script>
-  const mymap = L.map('mapid').setView(
-    [21.02988144294546, 105.80167329310144],
-    12
-  );
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }).addTo(mymap);
+    const mymap = L.map('mapid').setView(
+        [21.02988144294546, 105.80167329310144],
+        12
+    );
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(mymap);
 
-  mymap.on('click', function (e) {
-    document.querySelector('#lat').value = e.latlng.lat;
-    document.querySelector('#lng').value = e.latlng.lng;
-    let new_cinema = L.marker([e.latlng.lat, e.latlng.lng]);
-    new_cinema.addTo(mymap);
-  });
+    mymap.on('click', function (e) {
+        document.querySelector('#lat').value = e.latlng.lat;
+        document.querySelector('#lng').value = e.latlng.lng;
+        let new_cinema = L.marker([e.latlng.lat, e.latlng.lng]);
+        new_cinema.addTo(mymap);
+    });
 
   // <!-- GeoSearch -->
   // const searchControl = new GeoSearch.GeoSearchControl({

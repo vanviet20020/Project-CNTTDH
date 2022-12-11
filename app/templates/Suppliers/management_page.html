@@ -3,41 +3,42 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block body %}
-<div class="container mt-3">
-    <a class="btn btn-warning text-white" href="{{ url_for('create_supplier') }}">Thêm nhà cung cấp</a>
-    <form class="d-flex pt-3 pb-3" action="{{url_for('management_search_supplier')}}" class="d-flex" role="search" style="min-width: 650px">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="data_search" />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-    <table class="table table-striped text-center">
-        <thead>
-            <tr>
-                <th>STT</th>
-                <th>Tên</th>
-                <th>Link ảnh giá vé</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for supplier in suppliers %}
-            <tr>
-                <th scope="row">{{loop.index}}</th>
-                <td>{{supplier.name}}</td>
-                <td><a href="http://localhost:8080/static/img/Suppliers/{{supplier.img_price_ticket}}">{{supplier.img_price_ticket}}'</a></td>
-                <td>
-                    <a href="{{url_for('update_supplier', id_supplier=supplier.id)}}" class="btn btn-primary "
-                        role="button">
-                        Cập nhật
-                    </a>
-                </td>
-                <td>
-                    <a href="{{url_for('delete_supplier', id_supplier=supplier.id)}}" class="btn btn-danger">
-                        Xóa
-                    </a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+<a class="btn btn-warning text-white" href="{{ url_for('create_supplier') }}">Thêm nhà cung cấp</a>
+<form class="d-flex pt-3 pb-3" action="{{url_for('management_search_supplier')}}" class="d-flex" role="search"
+	style="min-width: 650px">
+	<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="data_search" />
+	<button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+<table class="table table-striped text-center">
+	<thead>
+		<tr>
+			<th>STT</th>
+			<th>Tên</th>
+			<th>Link ảnh giá vé</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for supplier in suppliers %}
+		<tr>
+			<th scope="row">{{loop.index}}</th>
+			<td>{{supplier.name}}</td>
+			<td><a
+					href="http://localhost:8080/static/img/Suppliers/{{supplier.img_price_ticket}}">{{supplier.img_price_ticket}}'</a>
+			</td>
+			<td>
+				<a href="{{url_for('update_supplier', id_supplier=supplier.id)}}" class="btn btn-primary "
+					role="button">
+					Cập nhật
+				</a>
+			</td>
+			<td>
+				<a href="{{url_for('delete_supplier', id_supplier=supplier.id)}}" class="btn btn-danger">
+					Xóa
+				</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
 {% endblock %}

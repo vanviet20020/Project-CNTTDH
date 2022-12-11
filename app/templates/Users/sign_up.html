@@ -3,58 +3,56 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block body %}
-<div class="container">
-    <form class="row g-3 mt-3" method="post" action="">
-        {{ form.csrf_token }}
-        <div class="col-10">
-            {{ form.email.label(class="form-label") }}
-            {{ form.email(class="form-control", placeholder="Nhập email") }}
-            {% for error in form.email.errors %}
-            <span style="color: red">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="col-5">
-            {{ form.password.label(class="form-label") }}<br />
-            {{ form.password(class="form-control", placeholder="Nhập mật khẩu") }}<br />
-            {% for error in form.password.errors %}
-            <span style="color: red">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="col-5">
-            {{ form.rePassword.label(class="form-label") }}
-            {{ form.rePassword(class="form-control", placeholder="Nhập lại mật khẩu") }}
-            {% for error in form.rePassword.errors %}
-            <span style="color: red">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="col-10">
-            {{ form.fullname.label(class="form-label") }}
-            {{ form.fullname(class="form-control", placeholder="Nhập tên người dùng") }}
-            {% for error in form.fullname.errors %}
-            <span style="color: red">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="col-10">
-            {{ form.phone_number.label(class="form-label") }}
-            {{ form.phone_number(class="form-control", placeholder="Nhập số điện thoại") }}
-            {% for error in form.phone_number.errors %}
-            <span style="color: red">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="col-12">
-            {{ form.gender.label(class="form-label") }}
-            {% for subfield in form.gender %}
-            <tr>
-                <td>{{ subfield }}</td>
-                <td>{{ subfield.label }}</td>
-            </tr>
-            {% endfor %} {% for error in form.gender.errors %}
-            <span style="color: red">{{ error }}</span>
-            {% endfor %}
-        </div>
-        <div class="col-12">
-            {{ form.submit(class="btn btn-primary") }}
-        </div>
-    </form>
-</div>
+<form class="row g-3 mt-3" method="post" action="">
+    {{ form.csrf_token }}
+    <div class="col-10">
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control", placeholder="Nhập email") }}
+        {% for error in form.email.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-5">
+        {{ form.password.label(class="form-label") }}<br />
+        {{ form.password(class="form-control", placeholder="Nhập mật khẩu") }}<br />
+        {% for error in form.password.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-5">
+        {{ form.rePassword.label(class="form-label") }}
+        {{ form.rePassword(class="form-control", placeholder="Nhập lại mật khẩu") }}
+        {% for error in form.rePassword.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-10">
+        {{ form.fullname.label(class="form-label") }}
+        {{ form.fullname(class="form-control", placeholder="Nhập tên người dùng") }}
+        {% for error in form.fullname.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-10">
+        {{ form.phone_number.label(class="form-label") }}
+        {{ form.phone_number(class="form-control", placeholder="Nhập số điện thoại") }}
+        {% for error in form.phone_number.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-12">
+        {{ form.gender.label(class="form-label") }}
+        {% for subfield in form.gender %}
+        <tr>
+            <td>{{ subfield }}</td>
+            <td>{{ subfield.label }}</td>
+        </tr>
+        {% endfor %} {% for error in form.gender.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-12">
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+</form>
 {% endblock %}

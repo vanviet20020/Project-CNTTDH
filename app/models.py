@@ -36,7 +36,7 @@ class Cinema(db.Model):
         'suppliers.id'), nullable=False)
     name = db.Column(db.String(255), nullable=False)
     address = db.Column(db.String(255), nullable=False)
-    district =db.Column(db.String(255), nullable=False)
+    district = db.Column(db.String(255), nullable=False)
     hotline = db.Column(db.String(20))
     geom = db.Column(Geometry('POINT'))
     movie_showtimes = db.relationship(

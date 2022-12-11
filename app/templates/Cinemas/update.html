@@ -1,23 +1,18 @@
 <!-- prettier-ignore -->
-{% extends "layout.html" %}
+{% extends "admin.html" %}
 
 
 {% block title %}
 {{ title }}
 {% endblock %}
 {% block cdn %}
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-  integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-  crossorigin=""
-/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+    integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+    crossorigin="" />
 <!-- Make sure you put this AFTER Leaflet's CSS -->
-<script
-  src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-  integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-  crossorigin=""
-></script>
+<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+    integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+    crossorigin=""></script>
 <!-- <script
   src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
   integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
@@ -52,126 +47,121 @@
 {% endblock %} {% block body %}
 <h1>{{title}}</h1>
 <div class="d-flex align-items-center">
-  <div id="mapid" style="width: 800px; height: 500px"></div>
-  <form action="" method="post">
-    <input
-      id="id_cinema"
-      name="id_cinema"
-      type="hidden"
-      value="{{id_cinema}}"
-    />
-    {{ form.hidden_tag() }}
-    <div class="input-group flex-nowrap">
-      <!-- prettier-ignore -->
-      {{ form.name.label(class="input-group-text") }}
-      {{form.name(class="form-control", placeholder="Rạp chiếu phim quốc gia") }}
-      {%for error in form.name.errors %}
-      <span style="color: red">{{ error }}</span>
-      {% endfor %}
-    </div>
-    <div class="input-group flex-nowrap">
-      <!-- prettier-ignore -->
-      {{ form.address.label(class="input-group-text") }}
-      {{form.address(class="form-control", placeholder="87 Láng Hạ, Quận Ba Đình") }}
-      {%for error in form.address.errors %}
-      <span style="color: red">{{ error }}</span>
-      {% endfor %}
-    </div>
-    <div class="input-group flex-nowrap">
-      <!-- prettier-ignore -->
-      {{ form.hotline.label(class="input-group-text") }}
-        {{form.hotline(class="form-control", placeholder="02435141791") }}
-        {%for error in form.hotline.errors %}
-      <span style="color: red">{{ error }}</span>
-      {% endfor %}
-    </div>
-    <div class="input-group flex-nowrap">
-      <!-- prettier-ignore -->
-      {{ form.lng.label(class="input-group-text") }}
-      {{form.lng(class="form-control", placeholder="105.81580853458946") }}
-      {%for error in form.lng.errors %}
-      <span style="color: red">{{ error }}</span>
-      {% endfor %}
-    </div>
-    <div class="input-group flex-nowrap">
-      <!-- prettier-ignore -->
-      {{ form.lat.label(class="input-group-text") }}
-      {{form.lat(class="form-control", placeholder="21.016867452369038") }}
-      {%for error in form.lat.errors %}
-      <span style="color: red">{{ error }}</span>
-      {% endfor %}
-    </div>
+    <div id="mapid" style="width: 800px; height: 500px"></div>
+    <form action="" method="post">
+        <input id="id_cinema" name="id_cinema" type="hidden" value="{{id_cinema}}" />
+        {{ form.hidden_tag() }}
+        <div class="input-group flex-nowrap">
+            <!-- prettier-ignore -->
+            {{ form.name.label(class="input-group-text") }}
+            {{form.name(class="form-control", placeholder="Rạp chiếu phim quốc gia") }}
+            {%for error in form.name.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="input-group flex-nowrap">
+            <!-- prettier-ignore -->
+            {{ form.address.label(class="input-group-text") }}
+            {{form.address(class="form-control", placeholder="87 Láng Hạ, Quận Ba Đình") }}
+            {%for error in form.address.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="input-group flex-nowrap">
+            <!-- prettier-ignore -->
+            {{ form.hotline.label(class="input-group-text") }}
+            {{form.hotline(class="form-control", placeholder="02435141791") }}
+            {%for error in form.hotline.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="input-group flex-nowrap">
+            <!-- prettier-ignore -->
+            {{ form.lng.label(class="input-group-text") }}
+            {{form.lng(class="form-control", placeholder="105.81580853458946") }}
+            {%for error in form.lng.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div class="input-group flex-nowrap">
+            <!-- prettier-ignore -->
+            {{ form.lat.label(class="input-group-text") }}
+            {{form.lat(class="form-control", placeholder="21.016867452369038") }}
+            {%for error in form.lat.errors %}
+            <span style="color: red">{{ error }}</span>
+            {% endfor %}
+        </div>
 
-    <p>{{ form.submit(class="btn btn-primary") }}</p>
-  </form>
+        <p>{{ form.submit(class="btn btn-primary") }}</p>
+    </form>
 </div>
 <script>
-  const mymap = L.map('mapid').setView(
-    [21.02988144294546, 105.80167329310144],
-    12
-  );
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }).addTo(mymap);
+    const mymap = L.map('mapid').setView(
+        [21.02988144294546, 105.80167329310144],
+        12
+    );
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(mymap);
 
-  // <!-- GeoSearch -->
-  // const searchControl = new GeoSearch.GeoSearchControl({
-  //   provider: new GeoSearch.OpenStreetMapProvider(),
-  // });
-  // mymap.addControl(searchControl);
+    // <!-- GeoSearch -->
+    // const searchControl = new GeoSearch.GeoSearchControl({
+    //   provider: new GeoSearch.OpenStreetMapProvider(),
+    // });
+    // mymap.addControl(searchControl);
 
-  // <!-- GeoData -->
-  // const searchControl = L.esri.Geocoding.geosearch({
-  //   position: 'topright',
-  //   placeholder: 'Enter an address or place e.g. 1 York St',
-  //   useMapBounds: false,
-  // }).addTo(mymap);
+    // <!-- GeoData -->
+    // const searchControl = L.esri.Geocoding.geosearch({
+    //   position: 'topright',
+    //   placeholder: 'Enter an address or place e.g. 1 York St',
+    //   useMapBounds: false,
+    // }).addTo(mymap);
 
-  // const results = L.layerGroup().addTo(mymap);
+    // const results = L.layerGroup().addTo(mymap);
 
-  // searchControl.on('results', function (data) {
-  //   results.clearLayers();
-  //   for (var i = data.results.length - 1; i >= 0; i--) {
-  //     results.addLayer(L.marker(data.results[i].latlng));
-  //   }
-  // });
-  function showFeatureInfor(feature, layer) {
-    if (feature.properties) {
-      layer.bindPopup(
-        '<div><h5>' +
-          feature.properties.name +
-          '</h5><span>' +
-          feature.properties.address +
-          '</span></br><span>' +
-          feature.properties.hotline +
-          '</span>'
-      );
+    // searchControl.on('results', function (data) {
+    //   results.clearLayers();
+    //   for (var i = data.results.length - 1; i >= 0; i--) {
+    //     results.addLayer(L.marker(data.results[i].latlng));
+    //   }
+    // });
+    function showFeatureInfor(feature, layer) {
+        if (feature.properties) {
+            layer.bindPopup(
+                '<div><h5>' +
+                feature.properties.name +
+                '</h5><span>' +
+                feature.properties.address +
+                '</span></br><span>' +
+                feature.properties.hotline +
+                '</span>'
+            );
+        }
     }
-  }
-  const id_cinema = document.querySelector('#id_cinema').value;
-  console.log(id_cinema);
-  fetch('http://127.0.0.1:5000/api/cinema/all')
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      L.geoJSON(data, {
-        onEachFeature: showFeatureInfor,
-        pointToLayer: function (feature, latlng) {
-          switch (feature.properties.id) {
-            case Number(id_cinema):
-              return L.marker(latlng);
-          }
-        },
-      }).addTo(mymap);
-    });
+    const id_cinema = document.querySelector('#id_cinema').value;
+    console.log(id_cinema);
+    fetch('http://127.0.0.1:5000/api/cinema/all')
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            L.geoJSON(data, {
+                onEachFeature: showFeatureInfor,
+                pointToLayer: function (feature, latlng) {
+                    switch (feature.properties.id) {
+                        case Number(id_cinema):
+                            return L.marker(latlng);
+                    }
+                },
+            }).addTo(mymap);
+        });
 
-  mymap.on('click', function (e) {
-    document.querySelector('#lat').value = e.latlng.lat;
-    document.querySelector('#lng').value = e.latlng.lng;
-    let new_cinema = L.marker([e.latlng.lat, e.latlng.lng]);
-    new_cinema.addTo(mymap);
-  });
+    mymap.on('click', function (e) {
+        document.querySelector('#lat').value = e.latlng.lat;
+        document.querySelector('#lng').value = e.latlng.lng;
+        let new_cinema = L.marker([e.latlng.lat, e.latlng.lng]);
+        new_cinema.addTo(mymap);
+    });
 
   // <!-- GeoSearch -->
   // // Tìm vị trí theo địa điểm

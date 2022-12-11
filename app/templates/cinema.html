@@ -42,7 +42,7 @@
 
     <script>
       // tao ban do
-      var map = L.map("map").setView([21.065379, 105.76272], 15);
+      var map = L.map("map").setView([21.065379, 105.76272], 14);
 
       var osm = L.tileLayer(
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -51,7 +51,14 @@
             '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors',
         }
       ).addTo(map);
-    //   var streets = L.tileLayer(mapboxUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}).addTo(map);
+      googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+      });
+      googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+          maxZoom: 20,
+          subdomains:['mt0','mt1','mt2','mt3']
+      });
     
       var myStyle1 = L.icon({
         iconUrl: "/static/img/1.png",
@@ -142,7 +149,8 @@
       // tao quan ly ban do nen
       var baseLayers = {
         "open street map ": osm,
-        // "Mapbox Streets": streets
+        "googleStreets":googleStreets,
+        "googleHybrid":googleHybrid
       };
       var overlayMaps = {
         CGV: cgv,
@@ -160,6 +168,7 @@
           .addTo(map)
           .bindPopup("<b>Vị trí của bạn</b>")
           .openPopup();
+        // L.circle([position.coords.latitude, position.coords.longitude],{radius:position.coords.accuracy}).addTo(map)
       }
     </script>
     <div class="container" style="margin-right: -5px;">

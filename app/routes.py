@@ -169,7 +169,7 @@ def create_supplier():
                 db.session.add(new_supplier)
                 db.session.commit()
                 return redirect(url_for('management_suppliers'))
-    return render_template('Suppliers/create.html', form=form, title="Thêm nhà cung cấp")
+    return render_template('Suppliers/create.html', form=form, title='Thêm nhà cung cấp')
 
 
 @app.route('/management/suppliers')
@@ -180,7 +180,7 @@ def management_suppliers():
         return redirect(url_for('index'))
     else:
         suppliers = Supplier.query.all()
-        return render_template('suppliers/management_page.html', suppliers=suppliers, title="Quản lý nhà cung cấp")
+        return render_template('suppliers/management_page.html', suppliers=suppliers, title='Quản lý nhà cung cấp')
 
 
 @app.route('/management/suppliers/search')
@@ -257,8 +257,7 @@ def create_cinema():
         suppliers = Supplier.query.all()
         form = CinemaForm()
         if form.validate_on_submit() and request.method == 'POST':
-            id_supplier = int(request.form.get("id_supplier"))
-            print(id_supplier)
+            id_supplier = int(request.form.get('id_supplier'))
             # lấy giá trị lat long và gán vào biến geoCinema dưới dạng điểm
             geomCinema = "Point(" + form.lng.data + " " + form.lat.data + ")"
             new_cinema = Cinema(
@@ -282,7 +281,7 @@ def create_cinema():
 def get_all_cinemas():
     cinemas = Cinema.query.all()
     return render_template(
-        'Cinemas/index.html',
+        'Cinemas/view_cinema_maps.html',
         cinemas=cinemas,
         title='Danh sách rạp chiếu phim',
     )
@@ -296,7 +295,6 @@ def search_cinemas():
             or_(
                 Cinema.name.ilike(f'%{data_search}%'),
                 Cinema.address.ilike(f'%{data_search}%'),
-                Cinema.supplier.name.ilike(f'%{data_search}%')
             )
         ).all()
         if cinemas and len(cinemas) >= 1:
@@ -341,14 +339,12 @@ def management_cinemas_search():
                 or_(
                     Cinema.name.ilike(f'%{data_search}%'),
                     Cinema.address.ilike(f'%{data_search}%'),
-                    Cinema.supplier.name.ilike(f'%{data_search}%')
                 )
             ).all()
             if cinemas and len(cinemas) >= 1:
                 return render_template(
                     'Cinemas/management_page.html',
                     cinemas=cinemas,
-                    title='',
                 )
             else:
                 flash('Không tìm thấy giá trị nhập')
@@ -401,11 +397,15 @@ def update_cinema(id_cinema):
         flash('Bạn không có quyền truy cập vào trang web này!')
         return redirect(url_for('index'))
     else:
+        suppliers = Supplier.query.all()
         form = CinemaForm()
         if form.validate_on_submit() and request.method == 'POST':
+            id_supplier = int(request.form.get('id_supplier'))
             cinema = Cinema.query.get(id_cinema)
+            cinema.id_supplier = id_supplier
             cinema.name = form.name.data
             cinema.address = form.address.data
+            cinema.district = form.district.data
             cinema.hotline = form.hotline.data
             geomCinema = "Point(" + form.lng.data + " " + form.lat.data + ")"
             new_geom = func.ST_GeomFromText(geomCinema, 4326)
@@ -416,6 +416,7 @@ def update_cinema(id_cinema):
 
         return render_template(
             'Cinemas/update.html',
+            suppliers=suppliers,
             id_cinema=id_cinema,
             form=form,
             title='Cập nhật thông tin rạp chiếu phim',
@@ -598,6 +599,107 @@ def delete_movie(id_movie):
         db.session.commit()
         flash('Xóa vị trí rạp ' + movie.name + 'thành công!')
         return redirect(url_for('management_movies'))
+
+
+@app.route('/management/movie_showtimes/create', methods=['GET', 'POST'])
+@login_required
+def create_movie_showtime():
+    if current_user.is_admin == False:
+        flash('Bạn không có quyền truy cập vào trang web này!')
+        return redirect(url_for('index'))
+    else:
+        cinemas = Cinema.query.all()
+        movies = Movie.query.all()
+        form = MovieShowtimeForm()
+        if form.validate_on_submit() and request.method == 'POST':
+            id_cinema = int(request.form.get("id_cinema"))
+            id_movie = int(request.form.get("id_movie"))
+            new_movie_showtime = Movie_showtime(
+                id_cinema=id_cinema,
+                id_movie=id_movie,
+                screening_date=form.screening_date.data,
+                time_start=form.time_start.data,
+                seats=form.seats.data
+            )
+            db.session.add(new_movie_showtime)
+            db.session.commit()
+            flash("Thêm lịch chiếu phim thành công!")
+            return redirect(url_for('management_movie_showtimes'))
+        return render_template('Movie_Showtimes/create.html', form=form, cinemas=cinemas, movies=movies, title="Tạo lịch chiếu phim")
+
+
+@app.route('/management/movie_showtime')
+@login_required
+def management_movie_showtimes():
+    if current_user.is_admin == False:
+        flash('Bạn không có quyền truy cập vào trang web này!')
+        return redirect(url_for('index'))
+    else:
+        movie_showtimes = Movie_showtime.query.all()
+        return render_template('Movie_Showtimes/management_page.html', movie_showtimes=movie_showtimes, title="Quản lý lích chiếu phim")
+
+
+@app.route('/management/movie_showtimes/search')
+def management_search_movie_showtimes():
+    data_search = request.args.get('data_search')
+    if data_search and len(data_search) >= 1:
+        movie_showtimes = Movie_showtime.query.filter(
+            or_(
+                Movie_showtime.screening_date.ilike(f'%{data_search}%'),
+                Movie_showtime.time_start.ilike(f'%{data_search}%'),
+            )
+        ).all()
+        if movie_showtimes and len(movie_showtimes) >= 1:
+            return render_template(
+                'Movie_showtimes/management_page.html',
+                movie_showtimes=movie_showtimes,
+                title='Quản lý lịch chiếu phim'
+            )
+        else:
+            flash('Không tìm thấy giá trị nhập')
+            return redirect(url_for('management_movie_showtimes'))
+    else:
+        flash('Giá trị nhập không đúng xin nhập lại!')
+        return redirect(url_for('management_movie_showtimes'))
+
+
+@app.route('/management/movie_showtimes/update/<int:id_movie_showtime>',  methods=['GET', 'POST'])
+@login_required
+def update_movie_showtime(id_movie_showtime):
+    if current_user.is_admin == False:
+        flash('Bạn không có quyền truy cập vào trang web này!')
+        return redirect(url_for('index'))
+    else:
+        cinemas = Cinema.query.all()
+        movies = Movie.query.all()
+        form = MovieShowtimeForm()
+        if form.validate_on_submit() and request.method == 'POST':
+            id_cinema = int(request.form.get("id_cinema"))
+            id_movie = int(request.form.get("id_movie"))
+            movie_showtime = Movie_showtime.query.get(id_movie_showtime)
+            movie_showtime.id_cinema = id_cinema
+            movie_showtime.id_movie = id_movie
+            movie_showtime.screening_date = form.screening_date.data,
+            movie_showtime.time_start = form.time_start.data,
+            movie_showtime.seats = form.seats.data
+            db.session.commit()
+            flash('Cập nhật lịch chiếu phim thành công!')
+            return redirect(url_for('management_movie_showtimes'))
+        return render_template('Movie_Showtimes/update.html', form=form, cinemas=cinemas, movies=movies, title="Cập nhật lịch chiếu phim")
+
+
+@app.route('/management/movie_showtimes/delete/<int:id_movie_showtime>',  methods=['GET', 'POST'])
+@login_required
+def delete_movie_showtime(id_movie_showtime):
+    if current_user.is_admin == False:
+        flash('Bạn không có quyền truy cập vào trang web này!')
+        return redirect(url_for('index'))
+    else:
+        movie_showtime = Movie_showtime.query.get(id_movie_showtime)
+        db.session.delete(movie_showtime)
+        db.session.commit()
+        flash('Xóa lịch chiếu phim thành công')
+        return redirect(url_for('management_movie_showtimes'))
 
 
 @app.route('/management')

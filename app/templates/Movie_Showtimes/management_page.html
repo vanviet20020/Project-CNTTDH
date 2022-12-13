@@ -1,0 +1,46 @@
+{% extends "admin.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block body %}
+<a class="btn btn-warning text-white" href="{{ url_for('create_movie_showtime') }}">Thêm lịch chiếu phim mới</a>
+<form class="d-flex pt-3 pb-3" action="{{ url_for('management_search_movie_showtimes') }}" class="d-flex" role="search">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="data_search" />
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+<table class="table table-striped text-center">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Tên rạp</th>
+            <th>Tên phim</th>
+            <th>Ngày chiếu</th>
+            <th>Giờ chiếu</th>
+            <th>Số ghế ngồi</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movie_showtime in movie_showtimes %}
+        <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{movie_showtime.cinema.name}}</td>
+            <td>{{movie_showtime.movie.name}}</td>
+            <td>{{movie_showtime.screening_date}}</td>
+            <td>{{movie_showtime.time_start}}</td>
+            <td>{{movie_showtime.seats}}</td>
+            <td>
+                <a href="{{ url_for('update_movie_showtime', id_movie_showtime=movie_showtime.id) }}" class="btn btn-primary " role="button">
+                    Cập nhật
+                </a>
+            </td>
+            <td>
+                <a href="{{ url_for('delete_movie_showtime', id_movie_showtime=movie_showtime.id) }}" class="btn btn-danger">
+                    Xóa
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

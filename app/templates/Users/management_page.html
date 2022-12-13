@@ -3,7 +3,6 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block body %}
-<button class="btn btn-warning text-white">Thêm Admin</button>
 <form class="d-flex pt-3 pb-3" action="{{url_for('management_search_users')}}" class="d-flex" role="search">
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="data_search" />
     <button class="btn btn-outline-success" type="submit">Search</button>

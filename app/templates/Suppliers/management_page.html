@@ -3,7 +3,7 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block body %}
-<a class="btn btn-warning text-white" href="{{ url_for('create_supplier') }}">Thêm nhà cung cấp</a>
+<a class="btn btn-warning text-white" href="{{ url_for('create_supplier') }}">Thêm nhà cung cấp mới</a>
 <form class="d-flex pt-3 pb-3" action="{{url_for('management_search_supplier')}}" class="d-flex" role="search"
 	style="min-width: 650px">
 	<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="data_search" />

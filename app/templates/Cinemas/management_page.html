@@ -10,8 +10,8 @@
 {% block body %}
 <h1>{{title}}</h1>
 <div>
-    <form action="{{url_for('search_cinemas')}}" class="d-flex" role="search">
-        <input type="search" name="search_data" class="form-control me-2"
+    <form action="{{url_for('management_cinemas_search')}}" class="d-flex" role="search">
+        <input type="search" name="data_search" class="form-control me-2"
             placeholder="Nhập tên hoặc vị trí rạp chiếu phim" />
 
         <button type="submit" class="btn btn-outline-success">
@@ -19,7 +19,7 @@
         </button>
     </form>
     <a href="{{ url_for('create_cinema')}}" class="btn btn-primary mt-3 max-width-content" role="button">
-        Tạo rạp chiếu phim mới
+        Thêm rạp chiếu phim mới
     </a>
     <a href="{{ url_for('view_cinema_maps')}}" class="btn btn-primary mt-3 max-width-content" role="button">
         Xem dưới dạng bản đồ

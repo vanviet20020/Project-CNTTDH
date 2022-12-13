@@ -1,0 +1,53 @@
+{% extends "admin.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block body %}
+<form class="row g-3 mt-3" method="post" action="">
+    {{ form.csrf_token }}
+    <div class="col-5">
+        <select name="id_cinema" class="form-select">
+            <option disabled value="">Chọn nhà cung cấp</option>
+            {% for cinema in cinemas %}
+            <option value="{{ cinema.id }}">
+                {{ cinema.name }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-5">
+        <select name="id_movie" class="form-select">
+            <option disabled value="">Chọn nhà cung cấp</option>
+            {% for movie in movies %}
+            <option value="{{ movie.id }}">
+                {{ movie.name }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-5">
+        {{ form.screening_date.label(class="form-label") }}
+        {{ form.screening_date(class="form-control", placeholder="Nhập ngày chiếu") }}
+        {% for error in form.screening_date.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-5">
+        {{ form.time_start.label(class="form-label") }}<br />
+        {{ form.time_start(class="form-control", placeholder="Nhập giờ chiếu") }}<br />
+        {% for error in form.time_start.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-5">
+        {{ form.seats.label(class="form-label") }}<br />
+        {{ form.seats(class="form-control", placeholder="Nhập số ghế ngồi") }}<br />
+        {% for error in form.seats.errors %}
+        <span style="color: red">{{ error }}</span>
+        {% endfor %}
+    </div>
+    <div class="col-12">
+        {{ form.submit(class="btn btn-primary") }}
+    </div>
+</form>
+{% endblock %}

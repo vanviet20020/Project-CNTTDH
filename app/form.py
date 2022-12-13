@@ -6,7 +6,8 @@ from wtforms import (
     BooleanField,
     RadioField,
     EmailField,
-    HiddenField
+    HiddenField,
+    DateField
 )
 from wtforms.validators import (
     DataRequired,
@@ -110,7 +111,6 @@ class SupplierForm(FlaskForm):
 
 
 class CinemaForm(FlaskForm):
-    id_supplier = HiddenField(validators=[DataRequired()])
     name = StringField('Tên rạp chiếu phim', validators=[DataRequired()])
     address = StringField('Địa chỉ', validators=[DataRequired()])
     district = StringField('Quận/Huyện', validators=[DataRequired()])
@@ -122,7 +122,7 @@ class CinemaForm(FlaskForm):
 
 class MovieForm(FlaskForm):
     name = StringField('Tên phim', validators=[DataRequired()])
-    photo = FileField('Ảnh phim',validators=[FileRequired()])
+    photo = FileField('Ảnh phim', validators=[FileRequired()])
     describe = StringField('Mô tả')
     director = StringField('Đạo diễn')
     actor = StringField('Diễn viên')
@@ -131,4 +131,11 @@ class MovieForm(FlaskForm):
     running_time = StringField('Thời gian chiếu', validators=[DataRequired()])
     language = StringField('Ngôn ngữ')
     rated = StringField('Khuyến cáo')
+    submit = SubmitField('Xong')
+
+
+class MovieShowtimeForm(FlaskForm):
+    screening_date = DateField('Ngày chiếu', validators=[DataRequired()])
+    time_start = StringField('Giờ chiếu')
+    seats = StringField('Số ghế ngồi')
     submit = SubmitField('Xong')

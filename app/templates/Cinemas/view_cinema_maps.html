@@ -29,7 +29,15 @@
         Tạo rạp chiếu phim mới
     </a>
 </div>
-<div id="mapid" style="width: 800px; height: 500px"></div>
+<form action="{{url_for('management_cinemas_search')}}" class="d-flex" role="search">
+    <input type="search" name="data_search" class="form-control me-2"
+        placeholder="Nhập tên hoặc vị trí rạp chiếu phim" />
+
+    <button type="submit" class="btn btn-outline-success">
+        <i class="fas fa-search"></i>
+    </button>
+</form>
+<div class="mt-3" id="mapid" style="width: 800px; height: 500px"></div>
 <button onclick="getLocation()" class="btn btn-info">Vị trí của tôi</button>
 
 <script>
@@ -54,9 +62,9 @@
                 feature.properties.address +
                 '</span></br><span>' +
                 feature.properties.hotline +
-                '</span><div class="d-flex justify-content-evenly"><a href="/manager/cinema/update/' +
+                '</span><div class="d-flex justify-content-evenly"><a href="/management/cinemas/update/' +
                 feature.properties.id +
-                '" class="btn btn-primary btn-sm text-white">Cập nhật</a><a href="/manager/cinema/delete/' +
+                '" class="btn btn-primary btn-sm text-white">Cập nhật</a><a href="/management/cinemas/delete/' +
                 feature.properties.id +
                 '" class="btn btn-danger btn-sm text-white">Xóa</a></div></div>'
             );

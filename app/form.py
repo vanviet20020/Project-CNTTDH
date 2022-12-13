@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import (
+    IntegerField,
     StringField,
     PasswordField,
     SubmitField,
@@ -138,4 +139,10 @@ class MovieShowtimeForm(FlaskForm):
     screening_date = DateField('Ngày chiếu', validators=[DataRequired()])
     time_start = StringField('Giờ chiếu')
     seats = StringField('Số ghế ngồi')
+    submit = SubmitField('Xong')
+
+
+class EvaluateForm(FlaskForm):
+    content = StringField('Nội dung')
+    star_rated = IntegerField('Số sao')
     submit = SubmitField('Xong')

@@ -22,22 +22,21 @@
   justify-content: space-around;
   align-items: center;
 }
-.header .container .logo a img {
+.header .container .search a img {
   width: 80px;
 }
-.header .container .logo input {
+.header .container .search input {
   margin-right: -5px;
-  padding: 8px 0;
-  border-radius: 0.5rem 0 0 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem 0 0 0.75rem;
   border: none;
 }
-.header .container .logo button {
+.header .container .search button {
   font-weight: 400;
-  font-size: 20px;
   color: #fff;
   background-color: #ed1364;
-  padding: 5px;
-  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0 0.75rem 0.75rem 0;
   border: none;
 }
 .header .container .navbar {

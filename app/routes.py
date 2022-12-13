@@ -281,9 +281,9 @@ def create_cinema():
 def get_all_cinemas():
     cinemas = Cinema.query.all()
     return render_template(
-        'Cinemas/view_cinema_maps.html',
+        'Cinemas/index.html',
         cinemas=cinemas,
-        title='Danh sách rạp chiếu phim',
+        title='Tất cả các rạp chiếu phim',
     )
 
 
@@ -301,7 +301,7 @@ def search_cinemas():
             return render_template(
                 'Cinemas/index.html',
                 cinemas=cinemas,
-                title='',
+                title='Tất cả các rạp chiếu phim',
             )
         else:
             flash('Không tìm thấy giá trị nhập')
@@ -309,6 +309,42 @@ def search_cinemas():
     else:
         flash('Giá trị nhập không đúng xin nhập lại!')
         return redirect(url_for('get_all_cinemas'))
+
+
+# API trả về dữ liệu json của Cinema
+@app.route('/api/cinemas')
+@login_required
+def api_get_all_cinemas():
+    cinemas = db.session.query(
+        Cinema.id,
+        Cinema.name,
+        Cinema.district,
+        Cinema.address,
+        Cinema.hotline,
+        func.ST_AsGeoJSON(Cinema.geom).label('geometry'),
+    ).all()
+    cinemasFeatures = []
+    for cinema in cinemas:
+        properties_temp = {
+            'id': cinema.id,
+            'name': cinema.name,
+            'district': cinema.district,
+            'address': cinema.address,
+            'hotline': cinema.hotline,
+        }
+        geometry_temp = json.loads(cinema.geometry)
+        cinema_temp = {
+            'type': 'Feature',
+            'properties': properties_temp,
+            'geometry': geometry_temp,
+        }
+        cinemasFeatures.append(cinema_temp)
+    return jsonify({'features': cinemasFeatures})
+
+
+@app.route('/cinemas/maps')
+def view_cinema_maps():
+    return render_template('Cinemas/view_cinema_maps.html', title='Xem vị trí rạp')
 
 
 @app.route('/management/cinemas')
@@ -352,42 +388,6 @@ def management_cinemas_search():
         else:
             flash('Giá trị nhập không đúng xin nhập lại!')
             return redirect(url_for('management_cinemas'))
-
-
-# API trả về dữ liệu json của Cinema
-@app.route('/api/cinemas')
-@login_required
-def api_get_all_cinemas():
-    cinemas = db.session.query(
-        Cinema.id,
-        Cinema.name,
-        Cinema.district,
-        Cinema.address,
-        Cinema.hotline,
-        func.ST_AsGeoJSON(Cinema.geom).label('geometry'),
-    ).all()
-    cinemasFeatures = []
-    for cinema in cinemas:
-        properties_temp = {
-            'id': cinema.id,
-            'name': cinema.name,
-            'district': cinema.district,
-            'address': cinema.address,
-            'hotline': cinema.hotline,
-        }
-        geometry_temp = json.loads(cinema.geometry)
-        cinema_temp = {
-            'type': 'Feature',
-            'properties': properties_temp,
-            'geometry': geometry_temp,
-        }
-        cinemasFeatures.append(cinema_temp)
-    return jsonify({'features': cinemasFeatures})
-
-
-@app.route('/cinemas/maps')
-def view_cinema_maps():
-    return render_template('Cinemas/view_cinema_maps.html', title='Xem vị trí rạp')
 
 
 @app.route('/management/cinemas/update/<int:id_cinema>', methods=['GET', 'POST'])
@@ -435,6 +435,21 @@ def delete_cinema(id_cinema):
         db.session.commit()
         flash('Xóa vị trí rạp ' + cinema.name + 'thành công!')
         return redirect(url_for('management_cinemas'))
+
+
+@app.route('/cinemas/<int:id_cinema>', methods=['GET', 'POST'])
+def detail_cinema(id_cinema):
+    cinema = Cinema.query.get(id_cinema)
+    form = EvaluateForm()
+    if form.validate_on_submit() and request.method == 'POST':
+        id_user = current_user.id
+        evaluate = Evaluate(
+            id_user=id_user, id_cinema=id_cinema,
+            content=form.content.data, start_rated=form.star_rated.data)
+        db.session.add(evaluate)
+        db.session.commit()
+        flash('Thêm đánh giá thành công')
+    return render_template('Cinemas/detail.html', form=form, cinema=cinema, title=cinema.name)
 
 
 @app.route('/management/movies/create', methods=['GET', 'POST'])

@@ -39,7 +39,9 @@ block body %}
             <p>{{movie.release_date}}</p>
             <div class="control">
               <a href="#"> <i class="fa-solid fa-play"></i>Trailer </a>
-              <a href="#"> <i class="fa-solid fa-exclamation"></i>Chi tiết! </a>
+              <a href="{{ url_for('detail',movie_id=movie.id)}}">
+                <i class="fa-solid fa-exclamation"></i>Chi tiết!
+              </a>
             </div>
           </div>
         </div>

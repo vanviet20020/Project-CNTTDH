@@ -49,7 +49,7 @@
 
     <script>
       // tao ban do
-      var map = L.map("map").setView([21.065379, 105.76272], 14);
+      var map = L.map("map").setView([21.038890, 105.824804], 14);
 
       var osm = L.tileLayer(
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -78,6 +78,30 @@
         iconAnchor: [22, 40],
         popupAnchor: [3, 15],
       });
+      var myStyle3 = L.icon({
+        iconUrl: "/static/img/3.png",
+        iconSize: [28, 40],
+        iconAnchor: [22, 40],
+        popupAnchor: [3, 15],
+      });
+      var myStyle4 = L.icon({
+        iconUrl: "/static/img/4.png",
+        iconSize: [28, 40],
+        iconAnchor: [22, 40],
+        popupAnchor: [3, 15],
+      });
+      var myStyle5 = L.icon({
+        iconUrl: "/static/img/5.png",
+        iconSize: [28, 40],
+        iconAnchor: [22, 40],
+        popupAnchor: [3, 15],
+      });
+      var myStyle6 = L.icon({
+        iconUrl: "/static/img/6.png",
+        iconSize: [28, 40],
+        iconAnchor: [22, 40],
+        popupAnchor: [3, 15],
+      });
       $.ajax({
         url: "http://localhost:8080/api/cinema/list",
         dataType: "json",
@@ -89,29 +113,75 @@
         },
       });
 
-      var cgv = L.geoJSON(geojson, {
+      var LamTuLiem = L.geoJSON(geojson, {
         onEachFeature: onEachFeatureBuilding,
         // feature: doi tuong, latlng: toa do
         pointToLayer: function (feature, latlng) {
-          switch (feature.properties.name) {
-            case "cgv":
+          switch (feature.properties.district) {
+            case "Nam Từ Liêm":
               return L.marker(latlng, {
                 icon: myStyle1,
               });
           }
         },
       }).addTo(map);
-      var lotte = L.geoJSON(geojson, {
+      var CauGiay = L.geoJSON(geojson, {
         onEachFeature: onEachFeatureBuilding,
+        // feature: doi tuong, latlng: toa do
         pointToLayer: function (feature, latlng) {
-          switch (feature.properties.name) {
-            case "lotte":
+          switch (feature.properties.district) {
+            case "Cầu Giấy":
               return L.marker(latlng, {
                 icon: myStyle2,
               });
           }
         },
       }).addTo(map);
+      var BaDinh = L.geoJSON(geojson, {
+        onEachFeature: onEachFeatureBuilding,
+        pointToLayer: function (feature, latlng) {
+          switch (feature.properties.district) {
+            case "Ba Đình":
+              return L.marker(latlng, {
+                icon: myStyle3,
+              });
+          }
+        },
+      }).addTo(map);
+      var BacTuLiem = L.geoJSON(geojson, {
+        onEachFeature: onEachFeatureBuilding,
+        pointToLayer: function (feature, latlng) {
+          switch (feature.properties.district) {
+            case "Bắc Từ Liêm":
+              return L.marker(latlng, {
+                icon: myStyle4,
+              });
+          }
+        },
+      }).addTo(map);
+      var HoanKiem = L.geoJSON(geojson, {
+        onEachFeature: onEachFeatureBuilding,
+        pointToLayer: function (feature, latlng) {
+          switch (feature.properties.district) {
+            case "Hoàn Kiếm":
+              return L.marker(latlng, {
+                icon: myStyle5,
+              });
+          }
+        },
+      }).addTo(map);
+      var TayHo = L.geoJSON(geojson, {
+        onEachFeature: onEachFeatureBuilding,
+        pointToLayer: function (feature, latlng) {
+          switch (feature.properties.district) {
+            case "Tây Hồ":
+              return L.marker(latlng, {
+                icon: myStyle6,
+              });
+          }
+        },
+      }).addTo(map);
+      
       //  thông tin đối trượng =======================================================
       function onEachFeatureBuilding(feature, layer) {
         if (feature.properties) {
@@ -137,9 +207,17 @@
         //  L.DomUtil.create: tao 1 the html ben trong control moi
         var div = L.DomUtil.create("div", "info");
         div.innerHTML +=
-          '<img style="width:30px;height:30px" src="/static/img/1.png" alt="building">: Rạp CGV<br>';
+          '<img style="width:30px;height:30px" src="/static/img/1.png" alt="">: Quận Nam Từ Liêm<br>';
         div.innerHTML +=
-          '<img style="width:30px;height:30px" src="/static/img/2.png" alt="tree">: Rạp Lotte<br>';
+          '<img style="width:30px;height:30px" src="/static/img/2.png" alt="tree">: Quận Cầu Giấy<br>';
+        div.innerHTML +=
+          '<img style="width:30px;height:30px" src="/static/img/3.png" alt="tree">:Quận Ba Đình<br>';
+        div.innerHTML +=
+          '<img style="width:30px;height:30px" src="/static/img/4.png" alt="tree">: Quận Bắc Từ Liêm<br>';
+        div.innerHTML +=
+          '<img style="width:30px;height:30px" src="/static/img/5.png" alt="tree">:Quận Hoàn kiếm<br>';
+        div.innerHTML +=
+          '<img style="width:30px;height:30px" src="/static/img/6.png" alt="tree">:Quận Tây Hồ<br>';
         return div;
       };
 
@@ -151,8 +229,12 @@
         "googleHybrid":googleHybrid
       };
       var overlayMaps = {
-        CGV: cgv,
-        Lotte: lotte,
+        'Nam Từ Liêm ': LamTuLiem,
+        'Cầu giấy': CauGiay,
+        'Ba Đình':BaDinh,
+        'Bắc Từ Liêm':BacTuLiem,
+        'Hoàn Kiếm':HoanKiem,
+        "Tây Hồ":TayHo
       };
       L.control.layers(baseLayers, overlayMaps).addTo(map);
       //dinh vi

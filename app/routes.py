@@ -13,7 +13,8 @@ from app.upload import allowed_file
 
 @app.route('/')
 def index():
-    return render_template('index.html', title='Rạp chiếu phim')
+    movies = Movie.query.all()
+    return render_template('index.html', title='Rạp chiếu phim', movies=movies)
 
 
 @app.route("/detail/<int:movie_id>")
@@ -629,10 +630,10 @@ def read_cinema_list():
     for cinema in cinemas:
         properties_temp = {
             "id": cinema.id,
-            "Tên": cinema.name,
-            "Địa chỉ": cinema.address,
-            "Số Điện thoại": cinema.hotline,
-            "Quận": cinema.district}
+            "name": cinema.name,
+            "address": cinema.address,
+            "hotline": cinema.hotline,
+            "district": cinema.district}
         geometry_temp = json.loads(cinema.geometry)
         cinema_temp = {
             "type": "Feature",
@@ -646,3 +647,50 @@ def read_cinema_list():
 @app.route("/api/ciema/view")
 def api_ciema_view():
     return render_template("cinema.html")
+
+
+@app.route("/addmovie_s1")
+def addmovie_s1():
+    return render_template("addMovie.html")
+
+
+@app.route("/addmovie_s2", methods=["POST"])
+def addmovie_s2():
+    """add new movie"""
+
+    # Get form information.
+    name = request.form.get("name")
+    img = request.form.get("img")
+    describe = request.form.get("describe")
+    director = request.form.get("director")
+    actor = request.form.get("actor")
+    genre = request.form.get("genre")
+    running_time = request.form.get("running_time")
+    release_date = request.form.get("release_date")
+    language = request.form.get("language")
+    rated = request.form.get("rated")
+    student = Movie(name=name, img=img, describe=describe,
+                    director=director, actor=actor,
+                    genre=genre, running_time=running_time,
+                    release_date=release_date, language=language, rated=rated)
+    db.session.add(student)
+    db.session.commit()
+    return render_template("index.html")
+
+
+@app.route("/supplier_s1")
+def supplier_s1():
+    return render_template("addSupplier.html")
+
+
+@app.route("/supplier_s2", methods=["POST"])
+def supplier_s2():
+    """add new movie"""
+
+    # Get form information.
+    name = request.form.get("name")
+    img_price_ticket = request.form.get("img_price_ticket")
+    student = Supplier(name=name, img_price_ticket=img_price_ticket)
+    db.session.add(student)
+    db.session.commit()
+    return render_template("index.html")

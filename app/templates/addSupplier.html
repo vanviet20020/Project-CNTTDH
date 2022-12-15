@@ -1,0 +1,16 @@
+{% extends "admin.html" %} {% block title %} {{ title }} {% endblock %} {% block
+body %}
+<form action="{{ url_for('supplier_s2') }}" method="post">
+  <div class="form-group">
+    <label for="name">Tên phim</label>
+    <input name="name" />
+  </div>
+  <div class="form-group">
+    <label for="img_price_ticket">giá vé</label>
+    <input name="img_price_ticket" />
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary">Add supplier</button>
+  </div>
+</form>
+{% endblock %}

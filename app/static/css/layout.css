@@ -57,8 +57,9 @@
   font-size: 16px;
   color: #fff;
 }
-.header .container .navbar a:hover {
-  color: #ed1364;
+.header .container .navbar i:hover,
+.header .container .navbar p:hover {
+  color: #ed1364 !important ;
 }
 .footer {
   background-image: url("../img/footer_bg.jpg");

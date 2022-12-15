@@ -38,12 +38,3 @@
         </form>
     </div>
 </div>
-{% with messages = get_flashed_messages() %}
-{% if messages[0] %}
-<input type="hidden" id="hiddenElement" value="{{messages[0]}}"></input>
-<script>
-    alert(document.getElementById('hiddenElement').value);
-</script>
-{% endif %}
-{% endwith %}
-{% endblock %}

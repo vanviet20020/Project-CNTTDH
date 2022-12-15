@@ -50,7 +50,6 @@ def login():
 
         # Hàm lưu tên tài khoản khi đăng nhập thành công
         login_user(user, remember=form.remember_me.data)
-        flash('Đăng nhập thành công!')
         return redirect(url_for('index'))
     return render_template('Users/login.html', title='Đăng nhập', form=form)
 

@@ -8,7 +8,17 @@
         <div class="col-md-12 mt-4">
             <h1>{{title}}</h1>
         </div>
-        
+        <div class="col-7 image">
+            <h3>Bảng giá vé</h3>
+            <img src="../../static/img/Suppliers/{{cinema.supplier.img_price_ticket}}" alt="..." />
+        </div>
+        <div class="col-1"></div>
+        <div class="col-4 control">
+            <h3>{{cinema.name}}</h3>
+            <p>Địa chỉ: {{cinema.address}}</p>
+            <p>Quận/Huyện: {{cinema.district}}</p>
+            <p>Hotline: {{cinema.hotline}}</p>
+        </div>
     </div>
 </div>
 {% endblock %}

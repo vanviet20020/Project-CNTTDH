@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-4">
+            <h1>{{title}}</h1>
+        </div>
+        <div class="col-3 image">
+            <img src="../../static/img/Movies/{{movie.img}}" alt="..." />
+        </div>
+        <div class="col-9 control">
+            <h1>{{movie.name}}</h1>
+            <p>Đạo diễn: {{movie.director}}</p>
+            <p>Diễn viên: {{movie.actor}}</p>
+            <p>Thời lượng: {{movie.running_time}}</p>
+            <p>Thể loại: {{movie.genre}}</p>
+            <p>Khởi chiếu: {{movie.release_date}} tại Việt Nam</p>
+            <span>Đối tượng: {{movie.language}}</span>
+            <p class="ptrailer">
+                <a href="#">Đặt vé</a>
+            </p>
+        </div>
+        <div class="resumen">
+            <h1>TÓM TẮT</h1>
+            <p>{{movie.describe}}</p>
+        </div>
+    </div>
+</div>
+<main class="main">
+    <div class="container row">
+        <div class="col-10">
+            <h1>LỊCH CHIẾU PHIM</h1>
+            <form class="form">
+                <label>Hệ thống rạp</label>
+                <div class="col-5">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Tất cả</option>
+                        <option>CGV</option>
+                        <option>Lotter Cinema</option>
+                        <option>Galaxy Cinema</option>
+                        <option>Startlight</option>
+                        <option>BHD start</option>
+                        <option>Mega GS</option>
+                    </select>
+                </div>
+                <div class="col-3">
+                    <button>Tìm lịch chiếu</button>
+                </div>
+            </form>
+            <div class="movie-showtime">
+                <div class="tab-content">
+                    <div class="movie">
+                        {% for movie_showtime in movie.movie_showtimes %}
+                        <div class="item d-flex justify-content-between">
+                            <h3>{{movie_showtime.cinema.supplier.name}}</h3>
+                            <div class="pull-left" style="margin-left: 88px;">
+                                <a>Lịch chiếu</a>
+                                <a
+                                    href="../../static/img/Suppliers/{{movie_showtime.cinema.supplier.img_price_ticket}}">
+                                    Giá vé
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="mx-4">
+                            <p>Ngày chiếu: {{movie_showtime.screening_date}}</p>
+                            <p>Giờ chiếu: {{movie_showtime.time_start}}</p>
+                            <p>Số ghế ngồi: {{movie_showtime.seats}}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</div>
+{% endblock %}

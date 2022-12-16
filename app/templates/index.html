@@ -3,94 +3,33 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block body %}
+
+
+<style>
+    .container {
+        flex-direction: column;
+    }
+</style>
 <section class="product">
     <div class="container">
         <h1>PHIM ĐANG CHIẾU</h1>
         <div class="row">
-            <div class="col">
+            {% for movie in movies %}
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
                 <div class="item">
-                    <div class="info">
-                        <img src="../static/img/a2.jpg" alt="BLACK" />
-                    </div>
+                    <a href="{{ url_for('detail_movie',id_movie=movie.id)}}" class="info">
+                        <img src="../static/img/Movies/{{movie.img}}" alt="BLACK" />
+                    </a>
                     <div class="control">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <a href="#">
+                        <h3>{{movie.name}}</h3>
+                        <p>{{movie.release_date}}</p>
+                        <a href="{{ url_for('detail_movie',id_movie=movie.id)}}">
                             <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="item">
-                    <div class="info">
-                        <img src="../static/img/a6.jpg" alt="BLACK" />
-                    </div>
-                    <div class="control">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <a href="#">
-                            <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="item">
-                    <div class="info">
-                        <img src="../static/img/a8.jpg" alt="BLACK" />
-                    </div>
-                    <div class="control">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <a href="#">
-                            <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="item">
-                    <div class="info">
-                        <img src="../static/img/a9.jpeg" alt="BLACK" />
-                    </div>
-                    <div class="control">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <a href="#">
-                            <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="item">
-                    <div class="info">
-                        <img src="../static/img/b2.jpg" alt="BLACK" />
-                    </div>
-                    <div class="control">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <a href="#">
-                            <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="item">
-                    <div class="info">
-                        <img src="../static/img/a5.jpg" alt="BLACK" />
-                    </div>
-                    <div class="control">
-                        <h3>BLACK PANTHER: WANKANDE FOREVER</h3>
-                        <p>Khởi chiếu:10.11.2022</p>
-                        <a href="#">
-                            <i class="fa-solid fa-exclamation"></i> Xem chi tiết!
-                        </a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -206,57 +145,6 @@
         </div>
     </div>
 </section>
-<!-- <section class="plan">
-      <div class="container">
-        <h1>TIN ĐIỆN ẢNH</h1>
-        <div class="row">
-          <div class="col">
-            <div class="image">
-              <img src="../static/img/a4.jpg" alt />
-            </div>
-            <div class="body">
-              <h3>Eternals dự kiến phát hành trên Disney+ vào đầu năm 2022</h3>
-              <div class="item d-flex">
-                <div class="control d-flex">
-                  <i class="fa-solid fa-play"></i>
-                  <p>Bá Thiết</p>
-                </div>
-                <div class="contact d-flex">
-                  <i class="fa-solid fa-play"></i>
-                  <p>Noverber 29, 2021</p>
-                </div>
-              </div>
-              <span
-                >Bom tấn được mong chờ nhất cuối năm,cũng là bộ phin tiếp theo trong
-                phase 4 của vũ trụ MCU - Eternals dự kiến sẽ phát hành...</span
-              >
-            </div>
-          </div>
-          <div class="col">
-            <div class="image">
-              <img src="../static/img/a4.jpg" alt />
-            </div>
-            <div class="body">
-              <h3>Eternals dự kiến phát hành trên Disney+ vào đầu năm 2022</h3>
-              <div class="item">
-                <div class="control">
-                  <i class="fa-solid fa-play"></i>
-                  <p>Bá Thiết</p>
-                </div>
-                <div class="contact">
-                  <i class="fa-solid fa-play"></i>
-                  <p>Noverber 29, 2021</p>
-                </div>
-              </div>
-              <span
-                >Bom tấn được mong chờ nhất cuối năm,cũng là bộ phin tiếp theo trong
-                phase 4 của vũ trụ MCU - Eternals dự kiến sẽ phát hành...</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
 <section class="future">
     <div class="container">
         <h1>Rapchieuphim.com - Đồng hành cùng bạn trong những thước phim</h1>

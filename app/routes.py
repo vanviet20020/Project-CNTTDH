@@ -13,7 +13,13 @@ from app.upload import allowed_file
 
 @app.route('/')
 def index():
-    return render_template('index.html', title='Rạp chiếu phim')
+    movies=Movie.query.all()
+    return render_template('index.html', movies=movies, title='Rạp chiếu phim')
+
+@app.route("/movies/detail/<int:id_movie>")
+def detail_movie(id_movie):
+    movie = Movie.query.get(id_movie)
+    return render_template("Movies/detail.html", movie=movie, title="Thông tin phim " + movie.name)
 
 
 @app.route('/sign_up', methods=['GET', 'POST'])
@@ -312,7 +318,6 @@ def search_cinemas():
 
 # API trả về dữ liệu json của Cinema
 @app.route('/api/cinemas')
-@login_required
 def api_get_all_cinemas():
     cinemas = db.session.query(
         Cinema.id,
@@ -611,7 +616,7 @@ def delete_movie(id_movie):
         movie = Movie.query.get(id_movie)
         db.session.delete(movie)
         db.session.commit()
-        flash('Xóa vị trí rạp ' + movie.name + 'thành công!')
+        flash('Xóa vị trí rạp ' + movie.name + ' thành công!')
         return redirect(url_for('management_movies'))
 
 

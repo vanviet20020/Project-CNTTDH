@@ -1,0 +1,107 @@
+.detail {
+  padding-top: 50px;
+  padding-left: 30px;
+  background-color: #f2f6f8;
+}
+.container {
+  display: flex;
+}
+.container .image img {
+  width: 100%;
+}
+.container .control h1 {
+  font-size: 27px;
+  padding-bottom: 20px;
+}
+.container .control p {
+  font-weight: 500;
+  font-size: 17px;
+}
+.container .control span {
+  font-weight: 500;
+  font-size: 17px;
+  color: #ff71a5;
+}
+.container .control .ptrailer {
+  margin-top: 20px;
+}
+.container .control .ptrailer a {
+  text-decoration: none;
+  border-radius: 5px;
+  background: #fe025c;
+  padding: 10px 40px;
+  font-size: 15px;
+  color: #fff;
+}
+.container .resumen {
+  margin-top: 16px;
+}
+.container .resumen h1 {
+  font-size: 25px;
+  color: #231f20;
+}
+.container .resumen p {
+  font-size: 15px;
+  color: #666;
+}
+.container .col-6 h1 {
+  padding-top: 20px;
+  font-size: 25px;
+  color: #231f20;
+}
+.container .col-10 .form button {
+  color: #fff;
+  background-color: #2ab27b;
+  border-color: #259d6d;
+  margin-top: 24px;
+  font-size: 14px;
+  padding: 7px;
+  border: none;
+}
+.container .movie-showtime {
+  display: flex;
+}
+.container .movie-showtime ul {
+  margin-left: -32px;
+}
+.container .movie-showtime ul li {
+  padding: 20px 0;
+  list-style: none;
+  margin: 20px 0;
+}
+.container .movie-showtime ul li a {
+  padding: 25px;
+  background-color: #fff;
+  text-align: center;
+  color: #000;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.container .tab-content .movie {
+  margin-left: 15px;
+  background-color: #fff;
+  margin-top: 8px;
+  padding: 1px 0;
+  border-radius: 5px;
+}
+.container .tab-content .movie p {
+  color: #000;
+  font-size: 14px;
+}
+.container .tab-content .movie .item {
+  /* margin-top: 20px; */
+}
+.container .tab-content .movie .item h3 {
+  font-size: 18px;
+}
+.container .tab-content .movie .item .pull-left a {
+  background-color: #fe025c;
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  line-height: 15px;
+  font-size: 14px;
+  text-decoration: none;
+}

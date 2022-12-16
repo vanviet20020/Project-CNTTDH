@@ -44,19 +44,6 @@
 
 {% block body %}
 
-<style>
-    .legend {
-        padding: 6px 8px;
-        font: 16px Arial, Helvetica, sans-serif;
-        background: white;
-        background: rgba(255, 255, 255, 0.8);
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-        border-radius: 5px;
-        line-height: 24px;
-        color: #555;
-    }
-</style>
-
 <body>
     <div class="container">
         <div class="row">
@@ -81,7 +68,6 @@
                 </form>
             </div>
             {% endif %}
-            <div><button onclick="getLocation()" class="btn btn-info mt-3">Vị trí của tôi</button></div>
             <div class="d-flex justify-content-center mt-3">
                 <div id="map" style="width: 1050px; height: 540px;"></div>
             </div>
@@ -227,14 +213,17 @@
             if (feature.properties) {
                 // .bindPopup.openPoPub them 1 su kien khi an vao doi tuong kien tao moi
                 layer.bindPopup(
-                    "<b>ID:" +
-                    feature.properties.id +
-                    "<b><br></b>address:" +
+                    '<b>Rạp:' +
+                    feature.properties.name +
+                    '</b><br><span>Địa chỉ:' +
                     feature.properties.address +
-                    "<b><br></b>hotline:" +
+                    '</span><br><span>Hotline:' +
                     feature.properties.hotline +
-                    "<b><br></b>Rạp:" +
-                    feature.properties.name
+                    '</span><br><div class="d-flex justify-content-evenly"><a href="/management/cinemas/update/' +
+                    feature.properties.id +
+                    '" class="btn btn-primary btn-sm text-white">Cập nhật</a><a href="/management/cinemas/delete/' +
+                    feature.properties.id +
+                    '" class="btn btn-danger btn-sm text-white">Xóa</a></div></div>'
                 );
             }
         }
@@ -286,18 +275,6 @@
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(showPosition);
             }
-        }
-
-        function showPosition(position) {
-            L.marker([position.coords.latitude, position.coords.longitude])
-
-                .addTo(map)
-
-                .bindPopup(
-                    '<b>Vị trí của bạn</b>'
-                )
-
-                .openPopup();
         }
     </script>
 </body>

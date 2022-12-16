@@ -416,7 +416,7 @@ def update_cinema(id_cinema):
             cinema.geom = new_geom
             db.session.commit()
             flash('Cập nhật thông tin rạp thành công!')
-            return redirect(url_for('get_all_cinemas'))
+            return redirect(url_for('management_cinemas'))
 
         return render_template(
             'Cinemas/update.html',

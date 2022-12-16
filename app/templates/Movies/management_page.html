@@ -17,9 +17,9 @@
                 <th>Tên</th>
                 <th>Ảnh</th>
                 <th>Đạo diễn</th>
-                <th>Diễn viên</th>
                 <th>Thể loại</th>
                 <th>Ngày công chiếu</th>
+                <th>Thời lượng</th>
                 <th></th>
             </tr>
         </thead>
@@ -30,9 +30,9 @@
                 <td>{{movie.name}}</td>
                 <td><a href="http://localhost:8080/static/img/Movies/{{movie.img}}">{{movie.img}}'</a></td>
                 <td>{{movie.director}}</td>
-                <td>{{movie.actor}}</td>
                 <td>{{movie.genre}}</td>
                 <td>{{movie.release_date }}</td>
+                <td>{{movie.running_time }}</td>
                 <td>
                     <a href="{{url_for('update_movie', id_movie=movie.id)}}" class="btn btn-primary " role="button">
                         Cập nhật
